@@ -15,3 +15,8 @@ def match_list():
 @app.route('/match_stats')
 def match_stats():
     return render_template('matchstats.html', title='Match Stats')
+
+
+@app.route('/add_comment')
+def add_comment():
+    return render_template('addcomment.html', title='Add Comment')

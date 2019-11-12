@@ -4,10 +4,10 @@ from config import Config
 from flask_pymongo import PyMongo, MongoClient
 from bson.objectid import ObjectId
 
-app = Flask(__name__)
-app.config.from_object(Config)
+app = Flask(__name__) # initiates an instace of the flask app
+app.config.from_object(Config) 
 
 client = MongoClient(Config.MONGO_URI)
-#add db here
+db = client.hfc_stats
 
 from app import routes # has to be imported after the instace on the flask app has been created.

@@ -10,8 +10,8 @@ headers = {
     }
 
 response = requests.request("GET", url, headers=headers, params=querystring)
+# Code above this line was provided by the api website.
 
 jsondata = response.json()
 
 for line in jsondata:
-    

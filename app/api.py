@@ -14,4 +14,4 @@ response = requests.request("GET", url, headers=headers, params=querystring)
 
 jsondata = response.json()
 
-for line in jsondata:
+

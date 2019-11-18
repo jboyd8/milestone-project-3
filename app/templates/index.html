@@ -5,9 +5,9 @@
         <p>How would you like to search for a match?</p>
     </div>
     <div class="row">
-        <div class="col-12 col-md-6">
-            <p>By Season</p>
-            <form action="POST">
+        <form action="{{ url_for('search_matches') }}" method="GET">
+            <div class="col-12 col-md-6">
+                <p>By Season</p>
                 <select name="season-list" id="season-list">
                     <option value="none" selected>-- choose one --</option>
                     <option value="2010">2010</option>
@@ -21,11 +21,9 @@
                     <option value="2018">2018</option>
                     <option value="2019">2019</option>
                 </select>
-            </form>
-        </div>
-        <div class="col-12 col-md-6">
-            <p>By Opposition</p>
-            <form action="POST">
+            </div>
+            <div class="col-12 col-md-6">
+                <p>By Opposition</p>
                 <select name="oppostion-list" id="opposition-list">
                     <option value="none" selected>-- choose one --</option>
                     <optgroup label="Premiership">
@@ -77,13 +75,11 @@
                         <option value="Stirling">Stirling Albion</option>
                     </optgroup>
                 </select>
-            </form>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <input class="btn btn-primary" type="submit" value="Submit">
-        </div>
+            </div>
+            <div class="col-12">
+                <input class="btn btn-primary" type="submit" value="Submit">
+            </div>
+        </form>
     </div>
 </section>
 {% endblock %}

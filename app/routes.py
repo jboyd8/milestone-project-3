@@ -7,6 +7,10 @@ import requests
 @app.route('/')
 @app.route('/index') # Both of these serves as routes to the homepage.
 def index():
+    try:
+        db.stats.find({'$or': [{'home-team':'Abderdeen'},{'away-team':'Aberdeen'}]})
+    except:
+        print('No games with matching criteria')
     return render_template('index.html', title='Home')
 
 

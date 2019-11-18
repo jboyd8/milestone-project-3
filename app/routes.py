@@ -22,7 +22,6 @@ def search_matches():
     #     print('No games with matching criteria')
     # else:
     #     # Make request to API here and add
-    print('Match List')
     return redirect(url_for('match_list'))
 
 

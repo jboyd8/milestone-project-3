@@ -4,7 +4,9 @@
 <section class="container">
     <div class="row">
         <div class="col-12">
-            match list here
+            {% for match in matches %}
+            <p>{{ match }}</p>
+            {% endfor %}
         </div>
     </div>
 </section>

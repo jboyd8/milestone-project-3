@@ -1,28 +1,30 @@
 from flask import render_template, redirect, url_for, request
-from app import app, db #imports the instance of the flask app created in __init__.py
+from app import app, db  # imports the instance of the flask app created in __init__.py
 import requests
 
 
-
 @app.route('/')
-@app.route('/index') # Both of these serves as routes to the homepage.
-def index(): 
-    return render_template('index.html', title='Home')
+@app.route('/index')  # Both of these serves as routes to the homepage.
+def index():
+    matches = db.stats.find()
+    return render_template('index.html', title='Home', matches=matches)
 
-@app.route('/search_matches', methods=['GET'])
+
+@app.route('/search_matches', methods=['POST', 'GET'])
 def search_matches():
     """
     Search the database to see if matches against a particular opposition or season
     exist. If not, then a request to the API should be made to the API, and the relevant information
     should then be added to the db. Once added, the db should then be searched again and returned to the user.
     """
-    # try:
-    #     db.stats.find({'$or': [{'home-team':'Abderdeen'},{'away-team':'Aberdeen'}]})
-    # except:
-    #     print('No games with matching criteria')
-    # else:
-    #     # Make request to API here and add
-    return redirect(url_for('match_list'))
+    try:
+        if request.method == 'POST':
+            selected = request.form.get('opposition-list')
+            matches = db.stats.find({'$or': [{'home_team':selected}, {'away_team':selected}]})
+            return redirect(url_for('match_list'), matches=matches)
+    except:
+        print('No Matches')
+    return render_template('matchlist.html', matches=matches)
 
 
 @app.route('/match_list')

@@ -17,13 +17,23 @@ def search_matches():
     exist. If not, then a request to the API should be made to the API, and the relevant information
     should then be added to the db. Once added, the db should then be searched again and returned to the user.
     """
-    try:
-        if request.method == 'POST':
+    if request.method == 'POST':
+        try:
             selected = request.form.get('opposition-list')
-            matches = db.stats.find({'$or': [{'home_team':selected}, {'away_team':selected}]})
-            return redirect(url_for('match_list'), matches=matches)
-    except:
-        print('No Matches')
+            matches = db.stats.find(
+                {'$or': [{'home_team': selected}, {'away_team': selected}]})
+            # return redirect(url_for('match_list'), matches=matches)
+        except:
+            print('No Matches found')
+        # else:
+        #     url = "https://api-football-v1.p.rapidapi.com/v2/fixtures/team/249"
+        #     querystring = {"timezone": "Europe/London"}
+        #     headers = {
+        #     'x-rapidapi-host': "api-football-v1.p.rapidapi.com",
+        #     'x-rapidapi-key': "2fb5aa3fd7mshe3fb9b490c8acf2p198b7fjsnb482b6b374aa"}
+        #     response = requests.request("GET", url, headers=headers, params=querystring)
+        #     print(response.text)
+
     return render_template('matchlist.html', matches=matches)
 
 

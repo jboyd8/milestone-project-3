@@ -22,8 +22,10 @@ def search_matches():
             selected = request.form.get('opposition-list')
             matches = db.stats.find(
                 {'$or': [{'home_team': selected}, {'away_team': selected}]})
+            # db_check = list(matches)
+            # print(db_check)
 
-            # if matches == :
+            # if db_check == []:
             #     response = requests.request("GET", api_url, headers=api_headers, params=api_querystring)
             #     print(response.text)
             # return redirect(url_for('match_list'), matches=matches)

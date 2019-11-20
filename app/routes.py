@@ -20,15 +20,13 @@ def search_matches():
     """
     if request.method == 'POST':
             selected = request.form.get('opposition-list')
-            matches = db.stats.find(
-                {'$or': [{'home_team': selected}, {'away_team': selected}]})
-            # db_check = list(matches)
-            # print(db_check)
+            query = {'$or': [{'home_team': selected}, {'away_team': selected}]}
+            matches = db.stats.find(query)
+            count_docs = db.stats.count(query)
 
-            # if db_check == []:
-            #     response = requests.request("GET", api_url, headers=api_headers, params=api_querystring)
-            #     print(response.text)
-            # return redirect(url_for('match_list'), matches=matches)
+            if not count_docs:
+                response = requests.request("GET", api_url, headers=api_headers, params=api_querystring)
+                print(response.text)
 
     return render_template('matchlist.html', matches=matches)
 

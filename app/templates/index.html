@@ -2,26 +2,10 @@
 {% block content %}
 <section class="container">
     <div class="row">
-        <p>How would you like to search for a match?</p>
+        <p>Which opposition would you like to view matches against?</p>
     </div>
     <div class="row">
         <form action="{{ url_for('search_matches') }}" method="POST">
-            <!-- <div class="col-12 col-md-6">
-                <p>By Season</p>
-                <select name="season-list" id="season-list">
-                    <option value="none" selected>-- choose one --</option>
-                    <option value="2010">2010</option>
-                    <option value="2011">2011</option>
-                    <option value="2012">2012</option>
-                    <option value="2013">2013</option>
-                    <option value="2014">2014</option>
-                    <option value="2015">2015</option>
-                    <option value="2016">2016</option>
-                    <option value="2017">2017</option>
-                    <option value="2018">2018</option>
-                    <option value="2019">2019</option>
-                </select>
-            </div> -->
             <div class="col-12 col-md-6">
                 <p>By Opposition</p>
                 <select name="opposition-list" id="opposition-list">

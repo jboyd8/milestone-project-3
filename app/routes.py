@@ -18,13 +18,10 @@ def search_matches():
     should then be added to the db. Once added, the db should then be searched again and returned to the user.
     """
     if request.method == 'POST':
-        try:
             selected = request.form.get('opposition-list')
             matches = db.stats.find(
                 {'$or': [{'home_team': selected}, {'away_team': selected}]})
             # return redirect(url_for('match_list'), matches=matches)
-        except:
-            print('No Matches found')
         # else:
         #     url = "https://api-football-v1.p.rapidapi.com/v2/fixtures/team/249"
         #     querystring = {"timezone": "Europe/London"}

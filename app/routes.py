@@ -1,6 +1,7 @@
 from flask import render_template, redirect, url_for, request
-from app import app, db  # imports the instance of the flask app created in __init__.py
+from app import app, db # imports the instance of the flask app created in __init__.py
 import requests
+from app.api import api_url, api_querystring, api_headers
 
 
 @app.route('/')
@@ -21,15 +22,11 @@ def search_matches():
             selected = request.form.get('opposition-list')
             matches = db.stats.find(
                 {'$or': [{'home_team': selected}, {'away_team': selected}]})
+
+            # if matches == :
+            #     response = requests.request("GET", api_url, headers=api_headers, params=api_querystring)
+            #     print(response.text)
             # return redirect(url_for('match_list'), matches=matches)
-        # else:
-        #     url = "https://api-football-v1.p.rapidapi.com/v2/fixtures/team/249"
-        #     querystring = {"timezone": "Europe/London"}
-        #     headers = {
-        #     'x-rapidapi-host': "api-football-v1.p.rapidapi.com",
-        #     'x-rapidapi-key': "2fb5aa3fd7mshe3fb9b490c8acf2p198b7fjsnb482b6b374aa"}
-        #     response = requests.request("GET", url, headers=headers, params=querystring)
-        #     print(response.text)
 
     return render_template('matchlist.html', matches=matches)
 

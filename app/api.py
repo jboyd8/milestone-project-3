@@ -1,17 +1,12 @@
-import requests
+api_url = "https://api-football-v1.p.rapidapi.com/v2/fixtures/team/249"
 
-url = "https://api-football-v1.p.rapidapi.com/v2/fixtures/team/249"
+api_querystring = {"timezone":"Europe/London"}
 
-querystring = {"timezone":"Europe/London"}
-
-headers = {
+api_headers = {
     'x-rapidapi-host': "api-football-v1.p.rapidapi.com",
     'x-rapidapi-key': "2fb5aa3fd7mshe3fb9b490c8acf2p198b7fjsnb482b6b374aa"
     }
 
-response = requests.request("GET", url, headers=headers, params=querystring)
-# Code above this line was provided by the api website.
 
-jsondata = response.json()
 
 

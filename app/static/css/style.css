@@ -1,4 +1,11 @@
-
+.title-link {
+    text-decoration: none;
+    color: black;
+}
+.title-link:hover {
+    text-decoration: none;
+    color: black;
+}
 
 #form-row {
     display: flex;

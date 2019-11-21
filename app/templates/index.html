@@ -2,13 +2,15 @@
 {% block content %}
 <section class="container">
     <div class="row">
-        <p>Which opposition would you like to view matches against?</p>
+        <div class="col-12 text-center">
+            <p>Which opposition would you like to view matches against?</p>
+        </div>
     </div>
-    <div class="row">
-        <form action="{{ url_for('search_matches') }}" method="POST">
-            <div class="col-12 col-md-6">
+    <div class="row" id="form-row">
+        <form action="{{ url_for('search_matches') }}" method="POST" class="text-center">
+            <div class="col-12 text-center">
                 <p>By Opposition</p>
-                <select name="opposition-list" id="opposition-list">
+                <select name="opposition-list" id="opposition-list" class="text-center">
                     <option value="none" selected>-- choose one --</option>
                     <optgroup label="Premiership">
                         <option value="Aberdeen">Aberdeen</option>

@@ -5,7 +5,12 @@
     <div class="row">
         <div class="col-12">
             {% for match in matches %}
-            <p>{{ match.home_team }} {{ match.score }}  {{ match.away_team }} </p>
+            <br>
+            <div class="card">
+                <div class="card-body text-center">
+                    {{ match.home_team }} {{ match.score }} {{ match.away_team }}
+                </div>
+            </div>
             {% endfor %}
         </div>
     </div>

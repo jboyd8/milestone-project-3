@@ -27,7 +27,9 @@ def search_matches():
         if not count_docs:
             response = requests.request(
                 "GET", api_url, headers=api_headers, params=api_querystring)
-            print(response.text)
+            if response.status_code == 200:
+                api_dict = json.loads(response.text)
+                # access dict here to get values to add into db.
 
     return render_template('matchlist.html', matches=matches)
 

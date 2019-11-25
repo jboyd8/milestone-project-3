@@ -1,5 +1,5 @@
 from flask import render_template, redirect, url_for, request
-from app import app, db # imports the instance of the flask app created in __init__.py
+from app import app, db  # imports the instance of the flask app created in __init__.py
 import requests
 from app.api import api_url, api_querystring, api_headers
 
@@ -7,8 +7,7 @@ from app.api import api_url, api_querystring, api_headers
 @app.route('/')
 @app.route('/index')  # Both of these serves as routes to the homepage.
 def index():
-    matches = db.stats.find()
-    return render_template('index.html', title='Home', matches=matches)
+    return render_template('index.html', title='Home')
 
 
 @app.route('/search_matches', methods=['POST', 'GET'])
@@ -19,14 +18,15 @@ def search_matches():
     should then be added to the db. Once added, the db should then be searched again and returned to the user.
     """
     if request.method == 'POST':
-            selected = request.form.get('opposition-list')
-            query = {'$or': [{'home_team': selected}, {'away_team': selected}]}
-            matches = db.stats.find(query)
-            count_docs = db.stats.count(query)
+        selected = request.form.get('opposition-list')
+        query = {'$or': [{'home_team': selected}, {'away_team': selected}]}
+        matches = db.stats.find(query)
+        count_docs = db.stats.count(query)
 
-            if not count_docs:
-                response = requests.request("GET", api_url, headers=api_headers, params=api_querystring)
-                print(response.text)
+        if not count_docs:
+            response = requests.request(
+                "GET", api_url, headers=api_headers, params=api_querystring)
+            print(response.text)
 
     return render_template('matchlist.html', matches=matches)
 

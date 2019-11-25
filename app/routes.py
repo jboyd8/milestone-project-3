@@ -41,11 +41,6 @@ def match_list():
     return render_template('matchlist.html', title='Match List')
 
 
-@app.route('/match_stats')
-def match_stats():
-    return render_template('matchstats.html', title='Match Stats')
-
-
 @app.route('/create_report')
 def create_report():
-    return render_template('addcomment.html', title='Add Report')
+    return render_template('createreport.html', title='Add Report')

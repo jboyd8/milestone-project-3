@@ -46,6 +46,6 @@ def match_stats():
     return render_template('matchstats.html', title='Match Stats')
 
 
-@app.route('/add_comment')
-def add_comment():
-    return render_template('addcomment.html', title='Add Comment')
+@app.route('/create_report')
+def create_report():
+    return render_template('addcomment.html', title='Add Report')

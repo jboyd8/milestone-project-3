@@ -10,10 +10,10 @@
                 <div class="card-body text-center">
                     {{ match.home_team }} {{ match.score }} {{ match.away_team }}
                     {% if match.report %}
-                    <button type="button" class="btn btn-primary">Edit Report</button>
-                    <button type="button" class="btn btn-danger">Delete Report</button>
+                    <button type="button" class="btn btn-primary"> <a href=""></a> Edit Report</button>
+                    <button type="button" class="btn btn-danger"> <a href=""></a> Delete Report</button>
                     {% else %}
-                    <button type="button" class="btn btn-success">Create Report</button>
+                    <button type="button" class="btn btn-success"> <a href="{url_for('create_report')}"></a> Create Report</button>
                     {% endif %}
                 </div>
             </div>

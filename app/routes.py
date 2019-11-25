@@ -2,6 +2,7 @@ from flask import render_template, redirect, url_for, request
 from app import app, db  # imports the instance of the flask app created in __init__.py
 import requests
 from app.api import api_url, api_querystring, api_headers
+import json
 
 
 @app.route('/')
@@ -21,7 +22,7 @@ def search_matches():
         selected = request.form.get('opposition-list')
         query = {'$or': [{'home_team': selected}, {'away_team': selected}]}
         matches = db.stats.find(query)
-        count_docs = db.stats.count(query)
+        count_docs = matches.count()
 
         if not count_docs:
             response = requests.request(

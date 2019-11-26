@@ -37,11 +37,9 @@ def search_matches():
                     else:
                         return False
                 
-                filtered_matches = filter(filter_matches, api_dict)
+                filtered_matches = dict(filter(filter_matches, api_dict))
 
-                for match in filtered_matches:
-                    print(match)
-
+                print(filtered_matches)
 
     return render_template('matchlist.html', matches=matches)
 

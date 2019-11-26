@@ -10,12 +10,11 @@
  
 
 ### User Stories
-* I want to be able to search for matches by season.
 * I want to be able to search for matches by opponent.
 * I want to be able able to see the score of a particular match
-* I want to be able to see the lineups for a particular match.
-* I want to be able to see statistics from a particular match. For example, possesion.
-* I want to be able to see player statistics.
+* I want to be able to add a match report to a particular match.
+* I want to be able to edit a report from a particular match.
+* I want to be able to delete a report from a particular match.
 
 ### Wireframes
 #### Desktop

@@ -30,8 +30,18 @@ def search_matches():
             if response.status_code == 200:
                 api_dict = json.loads(response.text)
                 # access dict here to get values to add into db.
-                # for match in api_dict:
-                #     print(api_dict['api']['fixtures'])
+                
+                def filter_matches(selected):
+                    if 'homeTeam' == selected or 'awayTeam' == selected:
+                        return True
+                    else:
+                        return False
+                
+                filtered_matches = filter(filter_matches, api_dict)
+
+                for match in filtered_matches:
+                    print(match)
+
 
     return render_template('matchlist.html', matches=matches)
 

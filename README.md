@@ -11,7 +11,9 @@
 
 ### User Stories
 * I want to be able to search for matches by opponent.
-* I want to be able able to see the score of a particular match
+* I want to be able to see the score of a particular match.
+* I want to be able to see the date of a match.
+* I want to be able to see the venue of a match.
 * I want to be able to add a match report to a particular match.
 * I want to be able to edit a report from a particular match.
 * I want to be able to delete a report from a particular match.

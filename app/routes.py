@@ -37,7 +37,7 @@ def search_matches():
                     else:
                         return False
                 
-                filtered_matches = dict(filter(filter_matches, api_dict))
+                filtered_matches = dict(filter(filter_matches, api_dict['api']['fixtures']))
 
                 print(filtered_matches)
 

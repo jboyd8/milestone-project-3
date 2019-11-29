@@ -36,6 +36,8 @@ def search_matches():
                 for i in api_dict['api']['fixtures']:
                     if selected in i['homeTeam']['team_name'] or selected in i['awayTeam']['team_name']:
                         filtered_dict.append(i)
+                
+                print(filtered_dict)
 
     return render_template('matchlist.html', matches=matches)
 

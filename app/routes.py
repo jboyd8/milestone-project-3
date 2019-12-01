@@ -20,9 +20,11 @@ def search_matches():
     """
     if request.method == 'POST':
         selected = request.form.get('opposition-list')
-        query = {'$or': [{'home_team': selected}, {'away_team': selected}]}
+        query = {'$or': [{'homeTeam': {'team_name': selected}}, {'awayTeam': {'team_name': selected}}]}
         matches = db.stats.find(query)
         count_docs = matches.count()
+
+        print(count_docs)
 
         if not count_docs:
             response = requests.request(
@@ -37,7 +39,7 @@ def search_matches():
                     if selected in i['homeTeam']['team_name'] or selected in i['awayTeam']['team_name']:
                         filtered_dict.append(i)
                 
-                print(filtered_dict)
+                db.stats.insert_many(filtered_dict)
 
     return render_template('matchlist.html', matches=matches)
 

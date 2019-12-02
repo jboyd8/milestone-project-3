@@ -52,13 +52,17 @@ def match_list():
     return render_template('matchlist.html', title='Match List')
 
 
-@app.route('/create_report/<task_id>')
-def create_report(task_id):
-    the_match = db.stats.find_one({'_id': ObjectId(task_id)})
+@app.route('/create_report/<match_id>')
+def create_report(match_id):
+    the_match = db.stats.find_one({'_id': ObjectId(match_id)})
     return render_template('createreport.html', match=the_match, title='Add Report')
 
 
-@app.route('/submit_report/<task_id>')
-def submit_report():
-    return 'Hello'
+@app.route('/submit_report/<match_id>', methods=['POST'])
+def submit_report(match_id):
+    db.stats.update({'_id': ObjectId(match_id)},
+    {
+        '$set': {'report':request.form.get('match_report')}
+    })
+    return redirect(url_for('index'))
 

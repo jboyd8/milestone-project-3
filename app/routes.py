@@ -15,7 +15,7 @@ def index():
 def search_matches():
     """
     Search the database to see if matches against a particular opposition or season
-    exist. If not, then a request to the API should be made to the API, and the relevant information
+    exist. If not, then a request to the API should be made, and the relevant information
     should then be added to the db. Once added, the db should then be searched again and returned to the user.
     """
     if request.method == 'POST':
@@ -52,3 +52,9 @@ def match_list():
 @app.route('/create_report')
 def create_report():
     return render_template('createreport.html', title='Add Report')
+
+
+@app.route('/submit_report')
+def submit_report():
+    return 'Hello'
+

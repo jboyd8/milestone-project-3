@@ -14,7 +14,7 @@
                     <button type="button" class="btn btn-primary"> <a href=""></a> Edit Report</button>
                     <button type="button" class="btn btn-danger"> <a href=""></a> Delete Report</button>
                     {% else %}
-                    <button type="button" class="btn btn-success"> <a href="{{url_for('create_report')}}"></a> Create Report</button>
+                    <button type="button" class="btn btn-success"> <a href="{{ url_for('create_report') }}">Create Report</a></button>
                     {% endif %}
                 </div>
             </div>

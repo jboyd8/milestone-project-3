@@ -8,12 +8,13 @@
             <br>
             <div class="card">
                 <div class="card-body text-center">
-                    {{ match.homeTeam }} {{ match.score }} {{ match.awayTeam }}
+                    {{ match.homeTeam.logo }} {{ match.homeTeam.team_name }} {{ match.score.fulltime }} {{ match.awayTeam.team_name }} {{ match.awayTeam.logo }}
+                    {{ match.venue }} {{ match.event_date }}  {{ match.league.name }}
                     {% if match.report %}
                     <button type="button" class="btn btn-primary"> <a href=""></a> Edit Report</button>
                     <button type="button" class="btn btn-danger"> <a href=""></a> Delete Report</button>
                     {% else %}
-                    <button type="button" class="btn btn-success"> <a href="{url_for('create_report')}"></a> Create Report</button>
+                    <button type="button" class="btn btn-success"> <a href="{{url_for('create_report')}}"></a> Create Report</button>
                     {% endif %}
                 </div>
             </div>

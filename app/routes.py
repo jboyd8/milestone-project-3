@@ -73,3 +73,9 @@ def edit_report(match_id):
     return render_template('editreport.html', match=the_match, title='Edit Report')  
 
 
+# @app.route('/delete_report/<match_id>')
+# def delete_report(match_id):
+#     db.stats.remove({'_id': ObjectId(match_id)})
+#     return redirect(url_for('index'))
+
+

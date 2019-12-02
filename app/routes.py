@@ -41,6 +41,8 @@ def search_matches():
                 
                 db.stats.insert_many(filtered_dict)
 
+                matches = db.stats.find(query)
+
     return render_template('matchlist.html', matches=matches)
 
 

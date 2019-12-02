@@ -20,7 +20,7 @@ def search_matches():
     """
     if request.method == 'POST':
         selected = request.form.get('opposition-list')
-        query = {'$or': [{'homeTeam': {'team_name': selected}}, {'awayTeam': {'team_name': selected}}]}
+        query = {'$or': [{'homeTeam.team_name': selected}, {'awayTeam.team_name': selected}]}
         matches = db.stats.find(query)
         count_docs = matches.count()
 

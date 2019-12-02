@@ -3,6 +3,7 @@ from app import app, db  # imports the instance of the flask app created in __in
 import requests
 from app.api import api_url, api_querystring, api_headers
 import json
+from bson.objectid import ObjectId
 
 
 @app.route('/')
@@ -51,12 +52,13 @@ def match_list():
     return render_template('matchlist.html', title='Match List')
 
 
-@app.route('/create_report')
-def create_report():
-    return render_template('createreport.html', title='Add Report')
+@app.route('/create_report/<task_id>')
+def create_report(task_id):
+    the_match = db.stats.find_one({'_id': ObjectId(task_id)})
+    return render_template('createreport.html', match=the_match, title='Add Report')
 
 
-@app.route('/submit_report')
+@app.route('/submit_report/<task_id>')
 def submit_report():
     return 'Hello'
 

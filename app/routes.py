@@ -25,8 +25,6 @@ def search_matches():
         matches = db.stats.find(query)
         count_docs = matches.count()
 
-        print(count_docs)
-
         if not count_docs:
             response = requests.request(
                 "GET", api_url, headers=api_headers, params=api_querystring)

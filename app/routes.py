@@ -66,3 +66,10 @@ def submit_report(match_id):
     })
     return redirect(url_for('index'))
 
+
+@app.route('/edit_report/<match_id>')
+def edit_report(match_id):
+    the_match = db.stats.find_one({'_id': ObjectId(match_id)})
+    return render_template('editreport.html', match=the_match, title='Edit Report')  
+
+

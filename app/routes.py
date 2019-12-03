@@ -1,5 +1,5 @@
 from flask import render_template, redirect, url_for, request, session
-from app import app, db  # imports the instance of the flask app created in __init__.py
+from app import app, db, bcrypt  # imports the instance of the flask app created in __init__.py
 import requests
 from app.api import api_url, api_querystring, api_headers
 import json
@@ -17,10 +17,21 @@ def register_page():
     return render_template('register.html', title='Register')
 
 
-# @app.route('/users/register', methods=['POST'])
-# def register():
-#     users = db.users
-#     return " "
+@app.route('/users/register', methods=['POST'])
+def register():
+    if request.method == 'POST':
+        users = db.users
+        user_exists = users.find_one({'username': request.form.get('username')})
+
+        if user_exists is None:
+            pw_hash = bcrypt.generate_password_hash(request.form.get('password'))
+            users.insert({'username': request.form.get('username'), 'password': pw_hash})
+            session['username'] = request.form.get('username')
+            return redirect(url_for('index'))
+
+        return 'That username already exists!'
+
+    return render_template('register.html')
 
 
 @app.route('/login_page')

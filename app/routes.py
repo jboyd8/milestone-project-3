@@ -12,6 +12,28 @@ def index():
     return render_template('index.html', title='Home')
 
 
+@app.route('/register_page')
+def register_page():
+    return render_template('register.html', title='Register')
+
+
+# @app.route('/users/register', methods=['POST'])
+# def register():
+#     users = db.users
+#     return " "
+
+
+@app.route('/login_page')
+def login_page():
+    return render_template('login.html', title='Login')
+
+
+# @app.route('/users/login', methods=['POST'])
+# def login():
+#     return " "
+
+
+
 @app.route('/search_matches', methods=['POST', 'GET'])
 def search_matches():
     """

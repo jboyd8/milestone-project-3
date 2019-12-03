@@ -45,11 +45,6 @@ def search_matches():
     return render_template('matchlist.html', matches=matches)
 
 
-@app.route('/match_list')
-def match_list():
-    return render_template('matchlist.html', title='Match List')
-
-
 @app.route('/create_report/<match_id>')
 def create_report(match_id):
     the_match = db.stats.find_one({'_id': ObjectId(match_id)})
@@ -68,7 +63,7 @@ def submit_report(match_id):
 @app.route('/edit_report/<match_id>')
 def edit_report(match_id):
     the_match = db.stats.find_one({'_id': ObjectId(match_id)})
-    return render_template('editreport.html', match=the_match, title='Edit Report')  
+    return render_template('editreport.html', match=the_match, title='Edit Report')
 
 
 # @app.route('/delete_report/<match_id>')

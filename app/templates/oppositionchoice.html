@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <p>Create your report here. Who did Hibs play against?</p>
+        </div>
+    </div>
+    <div class="row" id="form-row">
+        <form action="{{ url_for('search_matches') }}" method="POST" class="text-center">
+            <div class="col-12 text-center">
+                <p>By Opposition</p>
+                <select name="opposition-list" id="opposition-list" class="text-center">
+                    <option value="none" selected>-- choose one --</option>
+                    <optgroup label="Premiership">
+                        <option value="Aberdeen">Aberdeen</option>
+                        <option value="Celtic">Celtic</option>
+                        <option value="Hamilton Academical">Hamilton Academical</option>
+                        <option value="Heart OF Midlothian">Heart of Midlothian</option>
+                        <option value="Kilmarnock">Kilmarnock</option>
+                        <option value="Livingston">Livingston</option>
+                        <option value="Motherwell">Motherwell</option>
+                        <option value="Rangers">The Rangers</option>
+                        <option value="Ross County">Ross County</option>
+                        <option value="ST Johnstone">St Johnstone</option>
+                        <option value="ST Mirren">St Mirren</option>
+                    </optgroup>
+                    <optgroup label="Championship">
+                        <option value="Alloa Athletic">Alloa Athletic</option>
+                        <option value="Arbroath">Arbroath</option>
+                        <option value="Ayr">Ayr Utd</option>
+                        <option value="Dundee">Dundee</option>
+                        <option value="Dundee Utd">Dundee United</option>
+                        <option value="Dunfermline">Dunfermline Athletic</option>
+                        <option value="Morton">Greenock Morton</option>
+                        <option value="Inverness CT">Inverness Caledonian Thistle</option>
+                        <option value="Partick">Partick Thistle</option>
+                        <option value="Queen of the South">Queen of the South</option>
+                    </optgroup>
+                    <optgroup label="League One">
+                        <option value="Airdrie United">Airdrieonians</option>
+                        <option value="Clyde">Clyde</option>
+                        <option value="Dumbarton">Dumbarton</option>
+                        <option value="East Fife">East Fife</option>
+                        <option value="Falkirk">Falkirk</option>
+                        <option value="Forfar Athletic">Forfar Athletic</option>
+                        <option value="Montrose">Montrose</option>
+                        <option value="Raith Rovers">Raith Rovers</option>
+                        <option value="Stranraer">Stranraer</option>
+                    </optgroup>
+                    <optgroup label="League Two">
+                        <option value="Albin Rovers">Albion Rovers</option>
+                        <option value="Annan Athletic">Annan Athletic</option>
+                        <option value="Brechin">Brechin City</option>
+                        <option value="Cove Rangers">Cove Rangers</option>
+                        <option value="Cowdenbeath">Cowdenbeath</option>
+                        <option value="Edinburgh City">Edinburgh City</option>
+                        <option value="Elgin City">Elgin City</option>
+                        <option value="Queen's Park">Queens Park</option>
+                        <option value="Stenhousemuir">Stenhousemuir</option>
+                        <option value="Stirling Albion">Stirling Albion</option>
+                    </optgroup>
+                </select>
+            </div>
+            <div class="col-12">
+                <input class="btn btn-primary" type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}

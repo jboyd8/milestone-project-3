@@ -2,11 +2,12 @@ from flask import Flask
 import os
 from config import Config
 from flask_pymongo import PyMongo, MongoClient
-from bson.objectid import ObjectId
+from flask_bcrypt import Bcrypt
 
 # initiates an instace of the flask and assigns it to app
 app = Flask(__name__) 
-app.config.from_object(Config) 
+app.config.from_object(Config)
+bcrypt = Bcrypt(app)
 
 # Passes the MongoURI and assigns the correct collection to db to access it in routes.
 client = MongoClient(Config.MONGO_URI)

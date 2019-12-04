@@ -40,26 +40,26 @@ def login_page():
     return render_template('login.html', title='Login')
 
 
-@app.route('/users/login', methods=['POST'])
+@app.route('/login', methods=['POST', 'GET'])
 def login():
     users = db.users
     login_user = users.find_one({'username': request.form.get('username')})
 
-
     if login_user:
         if bcrypt.check_password_hash(login_user['password'], request.form.get('password').encode('utf-8')):
             session['username'] = request.form.get('username')
-            return redirect(url_for('index'))
+            return render_template('oppositionchoice.html')
         else:
             flash('Invalid Username/Password Combination')
-            return redirect(url_for('login'))
+            return redirect('login_page')
     else:
         flash('Username does not exist')
-        return redirect(url_for('login'))
-    
-    return render_template('login.html')
+        return redirect(url_for('login_page'))
 
 
+@app.route('/opposition_choice')
+def opposition_choice():
+    return render_template('oppositionchoice.html')
 
 
 @app.route('/search_matches', methods=['POST', 'GET'])

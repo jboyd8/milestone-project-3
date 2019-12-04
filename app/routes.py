@@ -45,8 +45,9 @@ def login():
     users = db.users
     login_user = users.find_one({'username': request.form.get('username')})
 
+
     if login_user:
-        if bcrypt.check_password_hash(request.form.get('password'), login_user['password'].encode('utf-8')) == login_user['password'].encode('utf-8'):
+        if bcrypt.check_password_hash(login_user['password'], request.form.get('password').encode('utf-8')):
             session['username'] = request.form.get('username')
             return redirect(url_for('index'))
         else:

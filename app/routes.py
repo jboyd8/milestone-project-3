@@ -24,7 +24,7 @@ def register():
         user_exists = users.find_one({'username': request.form.get('username')})
 
         if user_exists is None:
-            pw_hash = bcrypt.generate_password_hash(request.form.get('password'))
+            pw_hash = bcrypt.generate_password_hash(request.form.get('password')).decode('utf-8')
             users.insert({'username': request.form.get('username'), 'password': pw_hash})
             session['username'] = request.form.get('username')
             return redirect(url_for('index'))
@@ -32,7 +32,6 @@ def register():
             flash('Username already exists. Please try another one.')
             return redirect(url_for('register'))
         
-
     return render_template('register.html')
 
 
@@ -41,9 +40,24 @@ def login_page():
     return render_template('login.html', title='Login')
 
 
-# @app.route('/users/login', methods=['POST'])
-# def login():
-#     return " "
+@app.route('/users/login', methods=['POST'])
+def login():
+    users = db.users
+    login_user = users.find_one({'username': request.form.get('username')})
+
+    if login_user:
+        if bcrypt.check_password_hash(request.form.get('password'), login_user['password'].encode('utf-8')) == login_user['password'].encode('utf-8'):
+            session['username'] = request.form.get('username')
+            return redirect(url_for('index'))
+        else:
+            flash('Invalid Username/Password Combination')
+            return redirect(url_for('login'))
+    else:
+        flash('Username does not exist')
+        return redirect(url_for('login'))
+    
+    return render_template('login.html')
+
 
 
 

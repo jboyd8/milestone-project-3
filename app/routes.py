@@ -1,4 +1,4 @@
-from flask import render_template, redirect, url_for, request, session
+from flask import render_template, redirect, url_for, request, session, flash
 from app import app, db, bcrypt  # imports the instance of the flask app created in __init__.py
 import requests
 from app.api import api_url, api_querystring, api_headers
@@ -28,8 +28,10 @@ def register():
             users.insert({'username': request.form.get('username'), 'password': pw_hash})
             session['username'] = request.form.get('username')
             return redirect(url_for('index'))
-
-        return 'That username already exists!'
+        else:
+            flash('Username already exists. Please try another one.')
+            return redirect(url_for('register'))
+        
 
     return render_template('register.html')
 

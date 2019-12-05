@@ -57,6 +57,11 @@ def login():
         return redirect(url_for('login_page'))
 
 
+@app.route('/userreports')
+def user_reports():
+    return render_template('userreports.html')
+
+
 @app.route('/opposition_choice')
 def opposition_choice():
     return render_template('oppositionchoice.html')
@@ -110,25 +115,29 @@ def search_matches():
     return render_template('matchlist.html', matches=matches)
 
 
-@app.route('/create_report/<match_id>')
-def create_report(match_id):
-    the_match = db.stats.find_one({'_id': ObjectId(match_id)})
-    return render_template('createreport.html', match=the_match, title='Add Report')
+@app.route('/create_report')
+def create_report():
+    return render_template('createreport.html', title='Add Report')
 
 
-@app.route('/submit_report/<match_id>', methods=['POST'])
-def submit_report(match_id):
-    db.stats.update({'_id': ObjectId(match_id)},
-    {
-        '$set': {'report':request.form.get('match_report')}
+@app.route('/submit_report', methods=['POST'])
+def submit_report():
+    db.stats.insert_one({
+        'home_team' : request.form.get('home_team'),
+        'away_team' : request.form.get('away_team'),
+        'score' : request.form.get('score'),
+        'venue' : request.form.get('venue'),
+        'date' : request.form.get('date'),
+        'league_name' : request.form.get('league_name'),
+        'match_report' : request.form.get('match_report')
     })
-    return redirect(url_for('index'))
-
-
-@app.route('/edit_report/<match_id>')
-def edit_report(match_id):
-    the_match = db.stats.find_one({'_id': ObjectId(match_id)})
-    return render_template('editreport.html', match=the_match, title='Edit Report')
+    return redirect(url_for(''))
+#
+#
+# @app.route('/edit_report')
+# def edit_report(match_id):
+#     the_match = db.stats.find_one({'_id': ObjectId(match_id)})
+#     return render_template('editreport.html', match=the_match, title='Edit Report')
 
 
 # @app.route('/delete_report/<match_id>')

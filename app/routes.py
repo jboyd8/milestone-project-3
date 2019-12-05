@@ -48,7 +48,7 @@ def login():
     if login_user:
         if bcrypt.check_password_hash(login_user['password'], request.form.get('password').encode('utf-8')):
             session['username'] = request.form.get('username')
-            return render_template('oppositionchoice.html')
+            return render_template('userreports.html')
         else:
             flash('Invalid Username/Password Combination')
             return redirect('login_page')
@@ -57,7 +57,7 @@ def login():
         return redirect(url_for('login_page'))
 
 
-@app.route('/userreports')
+@app.route('/user_reports')
 def user_reports():
     return render_template('userreports.html')
 
@@ -120,9 +120,9 @@ def create_report():
     return render_template('createreport.html', title='Add Report')
 
 
-@app.route('/submit_report', methods=['POST'])
+@app.route('/submit_report', methods=['POST', 'GET'])
 def submit_report():
-    db.stats.insert_one({
+    db.stats.insert({
         'home_team' : request.form.get('home_team'),
         'away_team' : request.form.get('away_team'),
         'score' : request.form.get('score'),
@@ -131,7 +131,8 @@ def submit_report():
         'league_name' : request.form.get('league_name'),
         'match_report' : request.form.get('match_report')
     })
-    return redirect(url_for(''))
+
+    return redirect(url_for('user_reports'))
 #
 #
 # @app.route('/edit_report')

@@ -70,27 +70,42 @@ def search_matches():
     should then be added to the db. Once added, the db should then be searched again and returned to the user.
     """
     if request.method == 'POST':
-        selected = request.form.get('opposition-list')
-        query = {'$or': [{'homeTeam.team_name': selected}, {'awayTeam.team_name': selected}]}
-        matches = db.stats.find(query)
-        count_docs = matches.count()
+        response = requests.request("GET", api_url, headers=api_headers, params=api_querystring)
 
-        if not count_docs:
-            response = requests.request(
-                "GET", api_url, headers=api_headers, params=api_querystring)
-            if response.status_code == 200:
-                api_dict = json.loads(response.text)
-                # access dict here to get values to add into db.
+        if response.status_code == 200:
+            selected = request.form.get('opposition-list')
+            api_dict = json.loads(response.text)
 
-                filtered_dict = []
-                
-                for i in api_dict['api']['fixtures']:
-                    if selected in i['homeTeam']['team_name'] or selected in i['awayTeam']['team_name']:
-                        filtered_dict.append(i)
-                
-                db.stats.insert_many(filtered_dict)
+            filtered_dict = []
+            for i in api_dict['api']['fixtures']:
+                if selected in i['homeTeam']['team_name'] or selected in i['awayTeam']['team_name']:
+                    filtered_dict.append(i)
 
-                matches = db.stats.find(query)
+            matches = filtered_dict
+
+
+    # if request.method == 'POST':
+    #     selected = request.form.get('opposition-list')
+    #     query = {'$or': [{'homeTeam.team_name': selected}, {'awayTeam.team_name': selected}]}
+    #     matches = db.stats.find(query)
+    #     count_docs = matches.count()
+    #
+    #     if not count_docs:
+    #         response = requests.request(
+    #             "GET", api_url, headers=api_headers, params=api_querystring)
+    #         if response.status_code == 200:
+    #             api_dict = json.loads(response.text)
+    #             # access dict here to get values to add into db.
+    #
+    #             filtered_dict = []
+    #
+    #             for i in api_dict['api']['fixtures']:
+    #                 if selected in i['homeTeam']['team_name'] or selected in i['awayTeam']['team_name']:
+    #                     filtered_dict.append(i)
+    #
+    #             db.stats.insert_many(filtered_dict)
+    #
+    #             matches = db.stats.find(query)
 
     return render_template('matchlist.html', matches=matches)
 

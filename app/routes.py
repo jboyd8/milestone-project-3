@@ -17,7 +17,7 @@ def register_page():
     return render_template('register.html', title='Register')
 
 
-@app.route('/users/register', methods=['POST', 'GET'])
+@app.route('/register', methods=['POST', 'GET'])
 def register():
     if request.method == 'POST':
         users = db.users

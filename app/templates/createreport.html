@@ -5,9 +5,35 @@
     <div class="row">
         <div class="col-12">
             <h2>Enter you match report here.</h2>
-            <form action="{{ url_for('submit_report', match_id=match._id) }}" method="POST" class="text-center">
-                <textarea name="match_report" id="" cols="50" rows="20"></textarea>
-                <button type="sumbmit">Submit Report</button>
+            <form action="{{ url_for('submit_report') }}" method="POST" class="text-center">
+
+                <label>Home Team
+                    <input type="text" value="" name="home_team" disabled>
+                </label>
+                <label>Away Team
+                    <input type="text" value="" name="away_team" disabled>
+                </label>
+                <label>Score
+                    <input type="text" value="" name="score" disabled>
+                </label>
+                <label>Venue
+                    <input type="text" value="" name="venue" disabled>
+                </label>
+                <label>Date
+                    <input type="text" value="" name="date" disabled>
+                </label>
+                <label>League Name
+                    <input type="text" value="" name="league_name" disabled>
+                </label>
+
+                <label>Match Report
+                    <textarea name="match_report" id="" cols="50" rows="20" required></textarea>
+                </label>
+
+
+
+                <button type="sumbmit"><a href="{{ url_for('submit_report') }}">Submit Report</a></button>
+
             </form>
         </div>
     </div>

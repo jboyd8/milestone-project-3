@@ -61,8 +61,6 @@ def login_page():
 @app.route('/login', methods=['POST', 'GET'])
 def login():
 
-    logged_in = True if 'username' in session else False
-
     users = db.users
     login_user = users.find_one({'username': request.form.get('username')})
 

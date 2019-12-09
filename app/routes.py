@@ -9,12 +9,24 @@ from bson.objectid import ObjectId
 @app.route('/')
 @app.route('/index')  # Both of these serves as routes to the homepage.
 def index():
-    return render_template('index.html', title='Home')
+
+    logged_in = True if 'username' in session else False
+
+    if logged_in:
+        return redirect(url_for('user_reports'))
+
+    return render_template('index.html', title='Home', logged_in=logged_in)
 
 
 @app.route('/register_page')
 def register_page():
-    return render_template('register.html', title='Register')
+
+    logged_in = True if 'username' in session else False
+
+    if logged_in:
+        return redirect(url_for('user_reports'))
+
+    return render_template('register.html', title='Register', logged_in=logged_in)
 
 
 @app.route('/register', methods=['POST', 'GET'])
@@ -37,18 +49,27 @@ def register():
 
 @app.route('/login_page')
 def login_page():
-    return render_template('login.html', title='Login')
+
+    logged_in = True if 'username' in session else False
+
+    if logged_in:
+        return redirect(url_for('user_reports'))
+
+    return render_template('login.html', title='Login', logged_in=logged_in)
 
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
+
+    logged_in = True if 'username' in session else False
+
     users = db.users
     login_user = users.find_one({'username': request.form.get('username')})
 
     if login_user:
         if bcrypt.check_password_hash(login_user['password'], request.form.get('password').encode('utf-8')):
             session['username'] = request.form.get('username')
-            return render_template('userreports.html')
+            return redirect(url_for('user_reports'))
         else:
             flash('Invalid Username/Password Combination')
             return redirect('login_page')
@@ -57,14 +78,26 @@ def login():
         return redirect(url_for('login_page'))
 
 
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('index'))
+
+
 @app.route('/user_reports')
 def user_reports():
-    return render_template('userreports.html')
+
+    logged_in = True if 'username' in session else False
+
+    return render_template('userreports.html', logged_in=logged_in)
 
 
 @app.route('/opposition_choice')
 def opposition_choice():
-    return render_template('oppositionchoice.html')
+
+    logged_in = True if 'username' in session else False
+
+    return render_template('oppositionchoice.html', logged_in=logged_in)
 
 
 @app.route('/search_matches', methods=['POST', 'GET'])
@@ -74,6 +107,9 @@ def search_matches():
     exist. If not, then a request to the API should be made, and the relevant information
     should then be added to the db. Once added, the db should then be searched again and returned to the user.
     """
+
+    logged_in = True if 'username' in session else False
+
     if request.method == 'POST':
         response = requests.request("GET", api_url, headers=api_headers, params=api_querystring)
 
@@ -112,12 +148,15 @@ def search_matches():
     #
     #             matches = db.stats.find(query)
 
-    return render_template('matchlist.html', matches=matches)
+    return render_template('matchlist.html', matches=matches, logged_in=logged_in)
 
 
 @app.route('/create_report')
 def create_report():
-    return render_template('createreport.html', title='Add Report')
+
+    logged_in = True if 'username' in session else False
+
+    return render_template('createreport.html', title='Add Report', logged_in=logged_in)
 
 
 @app.route('/submit_report', methods=['POST', 'GET'])

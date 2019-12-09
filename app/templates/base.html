@@ -23,15 +23,15 @@
             {% if logged_in %}
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                        <a class="nav-item nav-link active" href="#">My Reports<span
+                        <a class="nav-item nav-link active" href="{{ url_for('user_reports') }}">My Reports<span
                                 class="sr-only">(current)</span></a>
-                        <a class="nav-item nav-link" href="#">Logout</a>
+                        <a class="nav-item nav-link" href="{{ url_for('logout') }}">Logout</a>
                     </div>
                 </div>
             {% else %}
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                        <a class="nav-item nav-link" href="#">Login</a>
+                        <a class="nav-item nav-link" href="{{ url_for('login_page') }}">Login</a>
                     </div>
                 </div>
             {% endif %}

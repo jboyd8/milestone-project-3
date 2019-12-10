@@ -160,13 +160,13 @@ def create_report():
 @app.route('/submit_report', methods=['POST', 'GET'])
 def submit_report():
     db.stats.insert({
-        'home_team' : request.form.get('home_team'),
-        'away_team' : request.form.get('away_team'),
-        'score' : request.form.get('score'),
-        'venue' : request.form.get('venue'),
-        'date' : request.form.get('date'),
-        'league_name' : request.form.get('league_name'),
-        'match_report' : request.form.get('match_report')
+        'home_team': request.form.get('home_team'),
+        'away_team': request.form.get('away_team'),
+        'score': request.form.get('score'),
+        'venue': request.form.get('venue'),
+        'date': request.form.get('date'),
+        'league_name': request.form.get('league_name'),
+        'match_report': request.form.get('match_report')
     })
 
     return redirect(url_for('user_reports'))

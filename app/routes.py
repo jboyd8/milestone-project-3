@@ -124,30 +124,6 @@ def search_matches():
 
             matches = filtered_dict
 
-
-    # if request.method == 'POST':
-    #     selected = request.form.get('opposition-list')
-    #     query = {'$or': [{'homeTeam.team_name': selected}, {'awayTeam.team_name': selected}]}
-    #     matches = db.stats.find(query)
-    #     count_docs = matches.count()
-    #
-    #     if not count_docs:
-    #         response = requests.request(
-    #             "GET", api_url, headers=api_headers, params=api_querystring)
-    #         if response.status_code == 200:
-    #             api_dict = json.loads(response.text)
-    #             # access dict here to get values to add into db.
-    #
-    #             filtered_dict = []
-    #
-    #             for i in api_dict['api']['fixtures']:
-    #                 if selected in i['homeTeam']['team_name'] or selected in i['awayTeam']['team_name']:
-    #                     filtered_dict.append(i)
-    #
-    #             db.stats.insert_many(filtered_dict)
-    #
-    #             matches = db.stats.find(query)
-
     return render_template('matchlist.html', matches=matches, logged_in=logged_in, title='Match List')
 
 
@@ -156,7 +132,7 @@ def create_report():
 
     logged_in = True if 'username' in session else False
 
-    return render_template('createreport.html', title='Add Report', logged_in=logged_in, title='Create Report')
+    return render_template('createreport.html', logged_in=logged_in, title='Create Report')
 
 
 @app.route('/submit_report', methods=['POST', 'GET'])
@@ -180,7 +156,7 @@ def submit_report():
 #     return render_template('editreport.html', match=the_match, title='Edit Report')
 
 
-# @app.route('/delete_report/<match_id>')
+# @app.route('/delete_report')
 # def delete_report(match_id):
 #     db.stats.remove({'_id': ObjectId(match_id)})
 #     return redirect(url_for('index'))

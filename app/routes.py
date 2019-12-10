@@ -87,7 +87,9 @@ def user_reports():
 
     logged_in = True if 'username' in session else False
 
-    return render_template('userreports.html', logged_in=logged_in)
+    reports = db.stats.find()
+
+    return render_template('userreports.html', logged_in=logged_in, reports=reports)
 
 
 @app.route('/opposition_choice')

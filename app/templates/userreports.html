@@ -5,5 +5,11 @@
 
     <button><a href="{{ url_for('opposition_choice') }}">Create a new report</a></button>
 
+    {% for report in reports %}
+        {{ report.home_team }} {{ report.score }} {{ report.away_team }}<br>
+        {{ report.venue }} {{ report.date }} {{ report.league_name }}<br>
+        {{ report.match_report }}<br>
+    {% endfor %}
+
 
 {% endblock %}

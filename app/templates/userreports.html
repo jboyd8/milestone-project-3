@@ -14,11 +14,15 @@
         </div>
         <div class="row">
             <div class="col-12">
-                {% for report in reports %}
-                    {{ report.home_team }} {{ report.score }} {{ report.away_team }}<br>
-                    {{ report.venue }} {{ report.date }} {{ report.league_name }}<br>
-                    {{ report.match_report }}<br>
-                {% endfor %}
+                {% if reports %}
+                    {% for report in reports %}
+                        {{ report.home_team }} {{ report.score }} {{ report.away_team }}<br>
+                        {{ report.venue }} {{ report.date }} {{ report.league_name }}<br>
+                        {{ report.match_report }}<br>
+                    {% endfor %}
+                {% else %}
+                    <p>You do not have any reports</p>
+                {% endif %}
             </div>
         </div>
     </div>

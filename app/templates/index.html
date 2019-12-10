@@ -1,15 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="container">
+<div class="container index-container text-center">
     <div class="row">
         <div class="col-12">
-            <p>Welcome, please sign in or register before proceeding.</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <button type="button" class="btn btn-primary"><a href="{{ url_for('login_page') }}">Login</a></button>
-            <button type="button" class="btn btn-success"><a href="{{ url_for('register_page') }}">Register</a></button>
+            <p>Welcome to HFC scouting assistant. Here, you can create scouting reports for any league match Hibs have
+                played since 2010. So feel free to enter your old reports here too.<br>
+                When creating new reports, you will be prompted to select an opposition. Once chosen, you will be shown a
+                list of games Hibs have played against your selected team. At that stage, you can click the 'Create Report'
+                link next to the match where you will be taken to a form to enter your report.<br>
+                Please login or register to get started.</p>
         </div>
     </div>
 </div>

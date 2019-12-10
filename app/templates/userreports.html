@@ -1,15 +1,26 @@
 {% extends 'base.html' %}
 {% block content %}
 
-    <h2>User reports</h2>
-
-    <button><a href="{{ url_for('opposition_choice') }}">Create a new report</a></button>
-
-    {% for report in reports %}
-        {{ report.home_team }} {{ report.score }} {{ report.away_team }}<br>
-        {{ report.venue }} {{ report.date }} {{ report.league_name }}<br>
-        {{ report.match_report }}<br>
-    {% endfor %}
-
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-12">
+                <h2>User reports</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <button><a href="{{ url_for('opposition_choice') }}">Create a new report</a></button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                {% for report in reports %}
+                    {{ report.home_team }} {{ report.score }} {{ report.away_team }}<br>
+                    {{ report.venue }} {{ report.date }} {{ report.league_name }}<br>
+                    {{ report.match_report }}<br>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 
 {% endblock %}

@@ -89,7 +89,7 @@ def user_reports():
 
     reports = db.stats.find()
 
-    return render_template('userreports.html', logged_in=logged_in, reports=reports)
+    return render_template('userreports.html', logged_in=logged_in, reports=reports, title='My Reports')
 
 
 @app.route('/opposition_choice')
@@ -97,7 +97,7 @@ def opposition_choice():
 
     logged_in = True if 'username' in session else False
 
-    return render_template('oppositionchoice.html', logged_in=logged_in)
+    return render_template('oppositionchoice.html', logged_in=logged_in, title='Opposition Choice')
 
 
 @app.route('/search_matches', methods=['POST', 'GET'])
@@ -148,7 +148,7 @@ def search_matches():
     #
     #             matches = db.stats.find(query)
 
-    return render_template('matchlist.html', matches=matches, logged_in=logged_in)
+    return render_template('matchlist.html', matches=matches, logged_in=logged_in, title='Match List')
 
 
 @app.route('/create_report')
@@ -156,7 +156,7 @@ def create_report():
 
     logged_in = True if 'username' in session else False
 
-    return render_template('createreport.html', title='Add Report', logged_in=logged_in)
+    return render_template('createreport.html', title='Add Report', logged_in=logged_in, title='Create Report')
 
 
 @app.route('/submit_report', methods=['POST', 'GET'])

@@ -1,7 +1,10 @@
 # Milestone Project 3
 ## Description
 ---
-
+This is my third milestone project from the full stack web developer course by Code Institute.
+This project was for the data centric part of the course. The purpose of this project was to build an application 
+with Python on the backend using the Flask framework. The project should include functionality to make all the CRUD
+ operations on a Database, which for this project would be MongoDB.
 
 []()
 

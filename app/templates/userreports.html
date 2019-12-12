@@ -19,6 +19,8 @@
                         {{ report.home_team }} {{ report.score }} {{ report.away_team }}<br>
                         {{ report.venue }} {{ report.date }} {{ report.league_name }}<br>
                         {{ report.match_report }}<br>
+                        <button><a href="{{ url_for('edit_report', report_id=report._id) }}">Edit Report</a></button>
+                        <button><a href="{{ url_for('delete_report', report_id=report._id) }}">Delete Report</a></button><br>
                     {% endfor %}
                 {% else %}
                     <p>You do not have any reports</p>

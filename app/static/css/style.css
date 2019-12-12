@@ -28,6 +28,23 @@
     color: black;
 }
 
+/* Forms */
+
+.form-div {
+    display: inline-block;
+    text-align: center;
+    padding: 0;
+}
+
+.submit-div {
+    display: flex;
+    justify-content: center;
+}
+
+.submit-button {
+    width: 20%;
+}
+
 footer {
 
 }

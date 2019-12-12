@@ -149,17 +149,17 @@ def submit_report():
     })
 
     return redirect(url_for('user_reports'))
-#
-#
-# @app.route('/edit_report')
-# def edit_report(match_id):
-#     the_match = db.stats.find_one({'_id': ObjectId(match_id)})
-#     return render_template('editreport.html', match=the_match, title='Edit Report')
 
 
-# @app.route('/delete_report')
-# def delete_report(match_id):
-#     db.stats.remove({'_id': ObjectId(match_id)})
-#     return redirect(url_for('index'))
+@app.route('/edit_report/<report_id>')
+def edit_report(report_id):
+    report = db.stats.find_one({'_id': ObjectId(report_id)})
+    return render_template('editreport.html', report=report, title='Edit Report')
+
+
+@app.route('/delete_report/<report_id>')
+def delete_report(report_id):
+    db.stats.remove({'_id': ObjectId(report_id)})
+    return redirect(url_for('user_reports'))
 
 

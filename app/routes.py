@@ -127,12 +127,13 @@ def search_matches():
     return render_template('matchlist.html', matches=matches, logged_in=logged_in, title='Match List')
 
 
-@app.route('/create_report')
-def create_report():
+@app.route('/create_report/<ht>/<at>/<venue>/<date>/<league>')
+def create_report(ht, at, venue, league, date):
 
     logged_in = True if 'username' in session else False
 
-    return render_template('createreport.html', logged_in=logged_in, title='Create Report')
+    return render_template('createreport.html', logged_in=logged_in, title='Create Report', ht=ht, at=at, venue=venue,
+                           league=league, date=date)
 
 
 @app.route('/submit_report', methods=['POST', 'GET'])

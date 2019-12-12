@@ -10,12 +10,9 @@
                 <div class="card-body text-center">
                     {{ match.homeTeam.team_name }} {{ match.score.fulltime }} {{ match.awayTeam.team_name }}
                     {{ match.venue }} {{ match.event_date }}  {{ match.league.name }}
-                    {% if match.report %}
-                    <button type="button" class="btn btn-primary"><a href="{{ url_for('edit_report') }}">Edit Report</a></button>
-                    <button type="button" class="btn btn-danger"> <a href="">Delete Report</a></button>
-                    {% else %}
-                    <button type="button" class="btn btn-success"><a href="{{ url_for('create_report') }}">Create Report</a></button>
-                    {% endif %}
+
+                    <button type="button" class="btn btn-success"><a href="{{ url_for('create_report', ht=match.homeTeam.team_name,
+                    at=match.awayTeam.team_name, venue=match.venue, date=match.event_date, league=match.league.name) }}">Create Report</a></button>
                 </div>
             </div>
             {% endfor %}

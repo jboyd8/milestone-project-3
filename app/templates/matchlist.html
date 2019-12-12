@@ -9,10 +9,10 @@
             <div class="card">
                 <div class="card-body text-center">
                     {{ match.homeTeam.team_name }} {{ match.score.fulltime }} {{ match.awayTeam.team_name }}
-                    {{ match.venue }} {{ match.event_date }}  {{ match.league.name }}
+                    {{ match.venue }} {{ match.event_date[0:10] }}  {{ match.league.name }}
 
                     <button type="button" class="btn btn-success"><a href="{{ url_for('create_report', ht=match.homeTeam.team_name,
-                    at=match.awayTeam.team_name, venue=match.venue, date=match.event_date, league=match.league.name,
+                    at=match.awayTeam.team_name, venue=match.venue, date=match.event_date[0:10], league=match.league.name,
                     score=match.score.fulltime) }}">Create Report</a></button>
                 </div>
             </div>

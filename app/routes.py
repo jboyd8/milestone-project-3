@@ -87,7 +87,7 @@ def user_reports():
 
     logged_in = True if 'username' in session else False
 
-    reports = db.stats.find()
+    reports = db.stats.find({'author': session['username']})
 
     return render_template('userreports.html', logged_in=logged_in, reports=reports, title='My Reports')
 
@@ -145,7 +145,8 @@ def submit_report():
         'venue': request.form.get('venue'),
         'date': request.form.get('date'),
         'league_name': request.form.get('league_name'),
-        'match_report': request.form.get('match_report')
+        'match_report': request.form.get('match_report'),
+        'author': session['username']
     })
 
     return redirect(url_for('user_reports'))
@@ -167,7 +168,8 @@ def update_report(report_id):
                         'venue': request.form.get('venue'),
                         'date': request.form.get('date'),
                         'league_name': request.form.get('league_name'),
-                        'match_report': request.form.get('match_report')
+                        'match_report': request.form.get('match_report'),
+                        'author': session['username']
                     })
     return redirect(url_for('user_reports'))
 

@@ -127,13 +127,13 @@ def search_matches():
     return render_template('matchlist.html', matches=matches, logged_in=logged_in, title='Match List')
 
 
-@app.route('/create_report/<ht>/<at>/<venue>/<date>/<league>')
-def create_report(ht, at, venue, league, date):
+@app.route('/create_report/<ht>/<at>/<venue>/<date>/<league>/<score>')
+def create_report(ht, at, venue, league, date, score):
 
     logged_in = True if 'username' in session else False
 
     return render_template('createreport.html', logged_in=logged_in, title='Create Report', ht=ht, at=at, venue=venue,
-                           league=league, date=date)
+                           league=league, date=date, score=score)
 
 
 @app.route('/submit_report', methods=['POST', 'GET'])
@@ -157,7 +157,7 @@ def edit_report(report_id):
     return render_template('editreport.html', report=report, title='Edit Report')
 
 
-@app.route('/update_report/<report_id>', methods=['POST'])
+@app.route('/update_report/<report_id>', methods=['POST', 'GET'])
 def update_report(report_id):
     db.stats.update({'_id': ObjectId(report_id)},
                     {

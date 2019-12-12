@@ -157,6 +157,21 @@ def edit_report(report_id):
     return render_template('editreport.html', report=report, title='Edit Report')
 
 
+@app.route('/update_report/<report_id>', methods=['POST'])
+def update_report(report_id):
+    db.stats.update({'_id': ObjectId(report_id)},
+                    {
+                        'home_team': request.form.get('home_team'),
+                        'away_team': request.form.get('away_team'),
+                        'score': request.form.get('score'),
+                        'venue': request.form.get('venue'),
+                        'date': request.form.get('date'),
+                        'league_name': request.form.get('league_name'),
+                        'match_report': request.form.get('match_report')
+                    })
+    return redirect(url_for('user_reports'))
+
+
 @app.route('/delete_report/<report_id>')
 def delete_report(report_id):
     db.stats.remove({'_id': ObjectId(report_id)})

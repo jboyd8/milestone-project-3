@@ -117,12 +117,12 @@ def search_matches():
             selected = request.form.get('opposition-list')
             api_dict = json.loads(response.text)
 
-            filtered_dict = []
+            matches = []
             for i in api_dict['api']['fixtures']:
                 if selected in i['homeTeam']['team_name'] or selected in i['awayTeam']['team_name']:
-                    filtered_dict.append(i)
-
-            matches = filtered_dict
+                    if i['homeTeam']['team_name'] and i['awayTeam']['team_name'] and i['score']['fulltime'] and \
+                            i['event_date'] and i['venue'] and i['league']['name']:
+                        matches.append(i)
 
     return render_template('matchlist.html', matches=matches, logged_in=logged_in, title='Match List')
 

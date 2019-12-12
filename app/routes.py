@@ -87,6 +87,9 @@ def user_reports():
 
     logged_in = True if 'username' in session else False
 
+    if not logged_in:
+        return redirect(url_for('index'))
+
     reports = db.stats.find({'author': session['username']})
 
     return render_template('userreports.html', logged_in=logged_in, reports=reports, title='My Reports')
@@ -96,6 +99,9 @@ def user_reports():
 def opposition_choice():
 
     logged_in = True if 'username' in session else False
+
+    if not logged_in:
+        return redirect(url_for('index'))
 
     return render_template('oppositionchoice.html', logged_in=logged_in, title='Opposition Choice')
 
@@ -109,6 +115,9 @@ def search_matches():
     """
 
     logged_in = True if 'username' in session else False
+
+    if not logged_in:
+        return redirect(url_for('index'))
 
     if request.method == 'POST':
         response = requests.request("GET", api_url, headers=api_headers, params=api_querystring)
@@ -132,6 +141,9 @@ def create_report(ht, at, venue, league, date, score):
 
     logged_in = True if 'username' in session else False
 
+    if not logged_in:
+        return redirect(url_for('index'))
+
     return render_template('createreport.html', logged_in=logged_in, title='Create Report', ht=ht, at=at, venue=venue,
                            league=league, date=date, score=score)
 
@@ -154,8 +166,14 @@ def submit_report():
 
 @app.route('/edit_report/<report_id>')
 def edit_report(report_id):
+
+    logged_in = True if 'username' in session else False
+
+    if not logged_in:
+        return redirect(url_for('index'))
+
     report = db.stats.find_one({'_id': ObjectId(report_id)})
-    return render_template('editreport.html', report=report, title='Edit Report')
+    return render_template('editreport.html', report=report, title='Edit Report', logged_in=logged_in)
 
 
 @app.route('/update_report/<report_id>', methods=['POST', 'GET'])

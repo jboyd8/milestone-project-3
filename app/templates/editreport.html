@@ -7,22 +7,22 @@
             <h2>Edit your match report below.</h2>
             <form action="{{ url_for('update_report', report_id=report._id) }}" method="POST" class="text-center">
                 <label>Home Team
-                    <input type="text" value="{{ report.home_team }}" name="home_team" id="home_team" disabled>
+                    <input type="text" value="{{ report.home_team }}" name="home_team" id="home_team">
                 </label>
                 <label>Away Team
-                    <input type="text" value="{{ report.away_team }}" name="away_team" id="away_team" disabled>
+                    <input type="text" value="{{ report.away_team }}" name="away_team" id="away_team">
                 </label>
                 <label>Score
-                    <input type="text" value="{{ report.score }}" name="score" id="score" disabled>
+                    <input type="text" value="{{ report.score }}" name="score" id="score">
                 </label>
                 <label>Venue
-                    <input type="text" value="{{ report.venue }}" name="venue" id="venue" disabled>
+                    <input type="text" value="{{ report.venue }}" name="venue" id="venue">
                 </label>
                 <label>Date
-                    <input type="text" value="{{ report.date }}" name="date" id="date" disabled>
+                    <input type="text" value="{{ report.date }}" name="date" id="date">
                 </label>
                 <label>League Name
-                    <input type="text" value="{{ report.league_name }}" name="league_name" id="league_name" disabled>
+                    <input type="text" value="{{ report.league_name }}" name="league_name" id="league_name">
                 </label>
 
                 <label>Match Report

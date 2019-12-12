@@ -12,7 +12,8 @@
                     {{ match.venue }} {{ match.event_date }}  {{ match.league.name }}
 
                     <button type="button" class="btn btn-success"><a href="{{ url_for('create_report', ht=match.homeTeam.team_name,
-                    at=match.awayTeam.team_name, venue=match.venue, date=match.event_date, league=match.league.name) }}">Create Report</a></button>
+                    at=match.awayTeam.team_name, venue=match.venue, date=match.event_date, league=match.league.name,
+                    score=match.score.fulltime) }}">Create Report</a></button>
                 </div>
             </div>
             {% endfor %}

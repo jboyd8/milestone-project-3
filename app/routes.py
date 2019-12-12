@@ -92,7 +92,9 @@ def user_reports():
 
     reports = db.stats.find({'author': session['username']})
 
-    return render_template('userreports.html', logged_in=logged_in, reports=reports, title='My Reports')
+    count = db.stats.count({'author': session['username']})
+
+    return render_template('userreports.html', logged_in=logged_in, reports=reports, title='My Reports', count=count)
 
 
 @app.route('/opposition_choice')

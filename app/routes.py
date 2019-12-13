@@ -9,6 +9,9 @@ from bson.objectid import ObjectId
 @app.route('/')
 @app.route('/index')  # Both of these serves as routes to the homepage.
 def index():
+    """
+    Check if a user is logged in, if so, redirect them  to the 'My Reports' page. If not, render the index template.
+    """
 
     logged_in = True if 'username' in session else False
 
@@ -20,6 +23,9 @@ def index():
 
 @app.route('/register_page')
 def register_page():
+    """
+    Check if user is logged in, if so, redirect to "my Reports". If not, render the register template.
+    """
 
     logged_in = True if 'username' in session else False
 
@@ -31,6 +37,13 @@ def register_page():
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():
+    """
+    Check to see if method is post, if so, check to see if the username provided already exists in the db. If the user
+    does not exist, then create a hash of the password provided and then store the hashed password and the username
+    in the database. Add the new user to the session so that they are logged in once registered and redirect them to
+    the "My Reports" page. If the username already exists, a message should be shown to the user saying so.
+    """
+
     if request.method == 'POST':
         users = db.users
         user_exists = users.find_one({'username': request.form.get('username')})
@@ -39,7 +52,7 @@ def register():
             pw_hash = bcrypt.generate_password_hash(request.form.get('password')).decode('utf-8')
             users.insert({'username': request.form.get('username'), 'password': pw_hash})
             session['username'] = request.form.get('username')
-            return redirect(url_for('index'))
+            return redirect(url_for('user_reports'))
         else:
             flash('Username already exists. Please try another one.')
             return redirect(url_for('register'))
@@ -49,6 +62,9 @@ def register():
 
 @app.route('/login_page')
 def login_page():
+    """
+    Check if the user is logged in, if so redirect to "my Reports". If not, render the login form.
+    """
 
     logged_in = True if 'username' in session else False
 
@@ -60,6 +76,11 @@ def login_page():
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
+    """
+    Check is the username provided exists in the database. If so, check the hashed password. If it matches, add the
+    user to the session and redirect to "my Reports".  If either the username doesnt exist, ot the password doesnt
+    match, the flash a message to the user detailing the issue.
+    """
 
     users = db.users
     login_user = users.find_one({'username': request.form.get('username')})
@@ -78,12 +99,21 @@ def login():
 
 @app.route('/logout')
 def logout():
+    """
+    Clear the session and redirect to the index page.
+    """
+
     session.clear()
     return redirect(url_for('index'))
 
 
 @app.route('/user_reports')
 def user_reports():
+    """
+    Check if the user is logged in, if not, redirect them to the index page. If so, render a list of reports that
+    have been created by the logged in user. Do a count on the cursor object so that I can return a message in the
+    template if the user hasnt created any reports yet.
+    """
 
     logged_in = True if 'username' in session else False
 
@@ -99,6 +129,10 @@ def user_reports():
 
 @app.route('/opposition_choice')
 def opposition_choice():
+    """
+    Check if the user is logged in, if not, redirect to index page. If user is logged in, then render opposition
+    choice page.
+    """
 
     logged_in = True if 'username' in session else False
 
@@ -111,9 +145,10 @@ def opposition_choice():
 @app.route('/search_matches', methods=['POST', 'GET'])
 def search_matches():
     """
-    Search the database to see if matches against a particular opposition or season
-    exist. If not, then a request to the API should be made, and the relevant information
-    should then be added to the db. Once added, the db should then be searched again and returned to the user.
+    Check to see if the user is logged in. If not, redirect to index page.If logged in, check to see if method was post.
+    If so, call the API and retrieve the data. If the api call is successful, then convert the JSON data into a python
+    dictionary. Then, all the matches  involving the opposition team selected should be filtered into a seperate list.
+    Render the matchlist page.
     """
 
     logged_in = True if 'username' in session else False

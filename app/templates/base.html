@@ -41,6 +41,16 @@
     </div>
 </header>
 
+{% if logged_in %}
+<div class="container current_user">
+    <div class="row">
+        <div class="col-12">
+            <p class="nav-item">You are currently logged in as {{ session['username'] }}</p>
+        </div>
+    </div>
+</div>
+{% endif %}
+
 {% block content %}
 {% endblock %}
 

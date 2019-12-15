@@ -48,7 +48,8 @@ html, body {
 
 .mr-title,
 .mr-button,
-.mr-card {
+.mr-card,
+.mr-para {
     margin-top: 1em;
     margin-bottom: 1em;
 }

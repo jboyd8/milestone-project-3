@@ -29,6 +29,11 @@ html, body {
 
 /*Index Page*/
 
+.index-container {
+    width: 75%;
+    line-height: 2em;
+}
+
 /*Login Page*/
 
 .login-instruction,
@@ -48,26 +53,14 @@ html, body {
 
 
 
-.index-container {
-    padding: 5em;
-    width: 50%;
-    line-height: 2em;
-}
+
 
 #form-row {
     display: flex;
     justify-content: center;
 }
 
-.index-btn {
-    display: flex;
-    justify-content: center;
-}
 
-.index-btn a {
-    text-decoration: none;
-    color: black;
-}
 
 /* Forms */
 

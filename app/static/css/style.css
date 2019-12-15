@@ -52,7 +52,7 @@ html, body {
     margin: 2em;
 }
 
-/*My Reports*/
+/*General Spacing*/
 
 .mr-title,
 .mr-button,
@@ -60,9 +60,16 @@ html, body {
 .mr-para,
 .opposition-dropdown,
 .opposition-instruction,
-.opposition-submit {
+.opposition-submit,
+.matchlist-btn,
+.card-button {
     margin-top: 1em;
     margin-bottom: 1em;
+}
+
+.matchlist-btn {
+    display: flex;
+    justify-content: center;
 }
 
 

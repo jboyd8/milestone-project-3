@@ -19,6 +19,16 @@ html, body {
     color: black;
 }
 
+/*Index Page*/
+
+/*Login Page*/
+
+.login-instruction,
+.login-form,
+.login-fields{
+    margin: 2em;
+}
+
 .current_user {
     display: flex;
     justify-content: center;

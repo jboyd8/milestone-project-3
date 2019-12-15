@@ -2,12 +2,12 @@
 {% block content %}
 
     <div class="container text-center">
-        <div class="row">
+        <div class="row mr-title">
             <div class="col-12">
-                <h2>User reports</h2>
+                <h2>My Reports</h2>
             </div>
         </div>
-        <div class="row">
+        <div class="row mr-button">
             <div class="col-12">
                 <button><a href="{{ url_for('opposition_choice') }}">Create a new report</a></button>
             </div>
@@ -16,10 +16,10 @@
             <div class="col-12">
                 {% if count %}
                     {% for report in reports %}
-                        <div class="card">
+                        <div class="card mr-card">
                             <div class="card-body">
                                 {{ report.home_team }} {{ report.score }} {{ report.away_team }}<br>
-                                Venue: {{ report.venue }}<br>
+                                Venue: <br> {{ report.venue }}<br>
                                 Date: {{ report.date }}<br>
                                 League: {{ report.league_name }}<br>
                                 Report: <br>

@@ -19,6 +19,14 @@ html, body {
     color: black;
 }
 
+.current_user {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
+
 /*Index Page*/
 
 /*Login Page*/
@@ -29,10 +37,16 @@ html, body {
     margin: 2em;
 }
 
-.current_user {
-    display: flex;
-    justify-content: center;
+/*My Reports*/
+
+.mr-title,
+.mr-button,
+.mr-card {
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
+
+
 
 .index-container {
     padding: 5em;

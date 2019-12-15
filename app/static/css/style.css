@@ -1,3 +1,5 @@
+/*Base page*/
+
 html, body {
     height: 100%;
 }
@@ -34,11 +36,11 @@ html, body {
     line-height: 2em;
 }
 
-/*Login Page*/
+/*Login/Register Page*/
 
 .login-instruction,
 .login-form,
-.login-fields{
+.login-fields {
     margin: 2em;
 }
 
@@ -52,14 +54,10 @@ html, body {
 }
 
 
-
-
-
 #form-row {
     display: flex;
     justify-content: center;
 }
-
 
 
 /* Forms */

@@ -28,6 +28,14 @@ html, body {
     margin-top: 1em;
 }
 
+.site-footer {
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
 
 /*Index Page*/
 
@@ -78,11 +86,3 @@ html, body {
     width: 20%;
 }
 
-.site-footer {
-    height: 10%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    bottom: 0;
-}

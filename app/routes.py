@@ -175,6 +175,11 @@ def search_matches():
 
 @app.route('/create_report/<ht>/<at>/<venue>/<date>/<league>/<score>')
 def create_report(ht, at, venue, league, date, score):
+    """
+    Check to see if the user is logged in, if not, redirect to the index page. If logged in, then render the form to
+    enter the report details. This function also should pass the details from the match over to the form so it can be
+     pre-populated.
+    """
 
     logged_in = True if 'username' in session else False
 
@@ -187,6 +192,10 @@ def create_report(ht, at, venue, league, date, score):
 
 @app.route('/submit_report', methods=['POST', 'GET'])
 def submit_report():
+    """
+    Enter the details provided in the form into the db. Then redirect to 'My reports'.
+    """
+
     db.stats.insert({
         'home_team': request.form.get('home_team'),
         'away_team': request.form.get('away_team'),
@@ -203,6 +212,10 @@ def submit_report():
 
 @app.route('/edit_report/<report_id>')
 def edit_report(report_id):
+    """
+    Check to see if user is logged in. If not, redirect to index page. If logged in, render the edit report template
+    with details pre-populated in the form.
+    """
 
     logged_in = True if 'username' in session else False
 
@@ -215,6 +228,10 @@ def edit_report(report_id):
 
 @app.route('/update_report/<report_id>', methods=['POST', 'GET'])
 def update_report(report_id):
+    """
+    Updated the report in the template with values provided in the form.
+    """
+
     db.stats.update({'_id': ObjectId(report_id)},
                     {
                         'home_team': request.form.get('home_team'),
@@ -231,6 +248,10 @@ def update_report(report_id):
 
 @app.route('/delete_report/<report_id>')
 def delete_report(report_id):
+    """
+    Delete the specific report from the database.
+    """
+
     db.stats.remove({'_id': ObjectId(report_id)})
     return redirect(url_for('user_reports'))
 

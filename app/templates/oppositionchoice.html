@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <section class="container">
-    <div class="row">
+    <div class="row opposition-instruction">
         <div class="col-12 text-center">
             <p>Create your report here. Who did Hibs play against?</p>
         </div>
@@ -9,8 +9,7 @@
     <div class="row" id="form-row">
         <form action="{{ url_for('search_matches') }}" method="POST" class="text-center">
             <div class="col-12 text-center">
-                <p>By Opposition</p>
-                <select name="opposition-list" id="opposition-list" class="text-center">
+                <select name="opposition-list" id="opposition-list" class="text-center opposition-dropdown">
                     <option value="none" selected>-- choose one --</option>
                     <optgroup label="Premiership">
                         <option value="Aberdeen">Aberdeen</option>
@@ -63,7 +62,7 @@
                 </select>
             </div>
             <div class="col-12">
-                <input class="btn btn-primary" type="submit" value="Submit">
+                <input class="btn btn-primary opposition-submit" type="submit" value="Submit">
             </div>
         </form>
     </div>

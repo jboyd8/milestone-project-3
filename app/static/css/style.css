@@ -57,7 +57,10 @@ html, body {
 .mr-title,
 .mr-button,
 .mr-card,
-.mr-para {
+.mr-para,
+.opposition-dropdown,
+.opposition-instruction,
+.opposition-submit {
     margin-top: 1em;
     margin-bottom: 1em;
 }

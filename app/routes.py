@@ -169,8 +169,10 @@ def search_matches():
                     if i['homeTeam']['team_name'] and i['awayTeam']['team_name'] and i['score']['fulltime'] and \
                             i['event_date'] and i['venue'] and i['league']['name']:
                         matches.append(i)
-
-    return render_template('matchlist.html', matches=matches, logged_in=logged_in, title='Match List')
+            return render_template('matchlist.html', matches=matches, logged_in=logged_in, title='Match List')
+        else:
+            flash('Sorry, we were unable to retrieve the data at this time. Please try again later.')
+            return redirect('opposition_choice')
 
 
 @app.route('/create_report/<ht>/<at>/<venue>/<date>/<league>/<score>')

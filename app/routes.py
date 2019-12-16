@@ -1,9 +1,12 @@
 from flask import render_template, redirect, url_for, request, session, flash
 from app import app, db, bcrypt  # imports the instance of the flask app created in __init__.py
 import requests
-from app.api import api_url, api_querystring, api_headers
 import json
 from bson.objectid import ObjectId
+from os import path
+
+if path.exists('app/api.py'):
+    from app.api import api_url, api_querystring, api_headers
 
 
 @app.route('/')

@@ -4,40 +4,40 @@
     <div class="container">
         <div class="row text-center form-instruction">
             <div class="col-12">
-                <h4>Edit your match report below.</h4>
+                <h4>Edit your match report below</h4>
             </div>
         </div>
         <div class="row text-center justify-content-center">
             <form action="{{ url_for('update_report', report_id=report._id) }}" method="POST"
                   class="justify-content-center">
-                <div class="form-group col-12 col-md-3 form-div">
+                <div class="form-group col-12">
                     <label>Home Team
                         <input type="text" value="{{ report.home_team }}" name="home_team" id="home_team"
                                class="form-control">
                     </label>
                 </div>
-                <div class="form-group col-12 col-md-3 form-div">
+                <div class="form-group col-12">
                     <label>Score
                         <input type="text" value="{{ report.score }}" name="score" id="score" class="form-control">
                     </label>
                 </div>
-                <div class="form-group col-12 col-md-3 form-div">
+                <div class="form-group col-12">
                     <label>Away Team
                         <input type="text" value="{{ report.away_team }}" name="away_team" id="away_team"
                                class="form-control">
                     </label>
                 </div>
-                <div class="form-group col-12 form-div">
+                <div class="form-group col-12">
                     <label>Venue
                         <input type="text" value="{{ report.venue }}" name="venue" id="venue" class="form-control">
                     </label>
                 </div>
-                <div class="form-group col-12 col-md-5 form-div">
+                <div class="form-group col-12">
                     <label>Date
                         <input type="text" value="{{ report.date }}" name="date" id="date" class="form-control">
                     </label>
                 </div>
-                <div class="form-group col-12 col-md-5 form-div">
+                <div class="form-group col-12">
                     <label>League Name
                         <input type="text" value="{{ report.league_name }}" name="league_name" id="league_name"
                                class="form-control">

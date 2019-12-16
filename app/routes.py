@@ -48,7 +48,7 @@ def register():
         users = db.users
         user_exists = users.find_one({'username': request.form.get('username')})
 
-        if user_exists is None:
+        if not user_exists:
             pw_hash = bcrypt.generate_password_hash(request.form.get('password')).decode('utf-8')
             users.insert({'username': request.form.get('username'), 'password': pw_hash})
             session['username'] = request.form.get('username')

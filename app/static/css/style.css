@@ -37,6 +37,12 @@ html, body {
     position: relative;
 }
 
+/*Buttons*/
+
+button a {
+    color: #fafafa;
+}
+
 
 /*Index Page*/
 

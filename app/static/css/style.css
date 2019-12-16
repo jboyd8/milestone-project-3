@@ -64,6 +64,15 @@ button a:hover {
     margin: 2em;
 }
 
+.flash-list {
+    padding: 0;
+}
+
+.flash-message {
+    list-style: none;
+    color: #9C1A1C;
+}
+
 /*General Spacing*/
 
 .mr-title,

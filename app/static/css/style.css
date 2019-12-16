@@ -43,6 +43,11 @@ button a {
     color: #fafafa;
 }
 
+button a:hover {
+    text-decoration: none;
+    color: #fafafa;
+}
+
 
 /*Index Page*/
 
@@ -96,5 +101,7 @@ button a {
 
 .submit-button {
     width: 20%;
+    background-color: #5cb85c;
+    color: #fafafa;
 }
 

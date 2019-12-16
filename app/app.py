@@ -1,5 +1,4 @@
 from flask import Flask
-import os
 from config import Config
 from flask_pymongo import PyMongo, MongoClient
 from flask_bcrypt import Bcrypt

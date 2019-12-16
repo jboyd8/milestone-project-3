@@ -1,5 +1,5 @@
 from flask import render_template, redirect, url_for, request, session, flash
-from app import app, db, bcrypt  # imports the instance of the flask app created in __init__.py
+from app import app, db, bcrypt  # imports the instance of the flask app created in app.py
 import requests
 import json
 from bson.objectid import ObjectId

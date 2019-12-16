@@ -3,7 +3,7 @@ from config import Config
 from flask_pymongo import PyMongo, MongoClient
 from flask_bcrypt import Bcrypt
 
-# initiates an instace of the flask and assigns it to app
+# initiates an instance of the flask and assigns it to app
 app = Flask(__name__) 
 app.config.from_object(Config)
 bcrypt = Bcrypt(app)
@@ -12,5 +12,5 @@ bcrypt = Bcrypt(app)
 client = MongoClient(Config.MONGO_URI)
 db = client.hfc_stats
 
-# has to be imported after the instace on the flask app has been created.
+# has to be imported after the instance on the flask app has been created.
 from app import routes

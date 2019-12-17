@@ -1,8 +1,7 @@
-from flask import Flask
+from flask import Flask, render_template, redirect, url_for, request, session, flash
 from config import Config
 from flask_pymongo import PyMongo, MongoClient
 from flask_bcrypt import Bcrypt
-from flask import render_template, redirect, url_for, request, session, flash
 import requests
 import json
 from bson.objectid import ObjectId

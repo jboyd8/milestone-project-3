@@ -215,7 +215,7 @@ def submit_report():
     Enter the details provided in the form into the db. Then redirect to 'My reports'.
     """
 
-    db.stats.insert({
+    db.stats.insert_one({
         'home_team': request.form.get('home_team'),
         'away_team': request.form.get('away_team'),
         'score': request.form.get('score'),

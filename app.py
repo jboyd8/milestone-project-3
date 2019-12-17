@@ -3,8 +3,6 @@ from config import Config
 from flask_pymongo import PyMongo, MongoClient
 from flask_bcrypt import Bcrypt
 from flask import render_template, redirect, url_for, request, session, flash
-#from app import db, bcrypt  # imports the instance of the flask app created in app.py
-#import app
 import requests
 import json
 from bson.objectid import ObjectId

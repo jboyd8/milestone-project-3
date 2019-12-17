@@ -1,13 +1,28 @@
+from flask import Flask
+from config import Config
+from flask_pymongo import PyMongo, MongoClient
+from flask_bcrypt import Bcrypt
 from flask import render_template, redirect, url_for, request, session, flash
-from app import db, bcrypt  # imports the instance of the flask app created in app.py
-import app
+#from app import db, bcrypt  # imports the instance of the flask app created in app.py
+#import app
 import requests
 import json
 from bson.objectid import ObjectId
+import os
 from os import path
 
-if path.exists('app/api.py'):
-    from app.api import api_url, api_querystring, api_headers
+if path.exists('api.py'):
+    from api import api_url, api_querystring, api_headers
+
+
+# initiates an instance of the flask and assigns it to app
+app = Flask(__name__)
+app.config.from_object(Config)
+bcrypt = Bcrypt(app)
+
+# Passes the MongoURI and assigns the correct collection to db to access it in routes.
+client = MongoClient(Config.MONGO_URI)
+db = client.hfc_stats
 
 
 @app.route('/')
@@ -60,7 +75,7 @@ def register():
         else:
             flash('Username already exists. Please try another one.')
             return redirect(url_for('register'))
-        
+
     return render_template('register.html')
 
 
@@ -262,3 +277,9 @@ def delete_report(report_id):
     return redirect(url_for('user_reports'))
 
 
+if __name__ == '__main__':
+    app.run(host=os.getenv('IP'), port=os.getenv('PORT'), debug=True)
+
+
+# has to be imported after the instance on the flask app has been created.
+# from app import routes

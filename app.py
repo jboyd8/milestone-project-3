@@ -7,9 +7,8 @@ import requests
 import json
 from bson.objectid import ObjectId
 import os
-from os import path
 
-if path.exists('api.py'):
+if os.path.exists('api.py'):
     from api import api_url, api_querystring, api_headers
 
 
@@ -174,8 +173,8 @@ def search_matches():
         return redirect(url_for('index'))
 
     if request.method == 'POST':
-        response = requests.request("GET", os.environ.get('api_url'), headers=os.environ.get('api_headers'),
-                                    params=os.environ.get('api_querystring'))
+        response = requests.request("GET", api_url, headers=api_headers,
+                                    params=api_querystring)
 
         if response.status_code == 200:
             selected = request.form.get('opposition-list')
@@ -278,7 +277,3 @@ def delete_report(report_id):
 
 if __name__ == '__main__':
     app.run(host=os.getenv('IP'), port=os.getenv('PORT'), debug=True)
-
-
-# has to be imported after the instance on the flask app has been created.
-# from app import routes

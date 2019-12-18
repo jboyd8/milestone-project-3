@@ -2,15 +2,26 @@
 ## Description
 ---
 This is my third milestone project from the full stack web developer course by Code Institute.
-This project was for the data centric part of the course. The purpose of this project was to build an application 
+This project was for the data centric section of the course. The purpose of this project was to build an application 
 with Python on the backend using the Flask framework. The project should include functionality to make all the CRUD
  operations on a Database, which for this project would be MongoDB.
-
-[]()
-
-## UX
----
  
+I chose to create a mock of a scouting hub that would be used by a specific team. I chose to mimic this on Hibs as
+its the team I support. This would allow a user to create reports on a Hibs match of their choosing.
+
+[Deployed Website](http://jb-milestone-project-3.herokuapp.com/)
+
+## UX/UI
+---
+I wanted this to look like a professional tool as it is effectively mimicking something that would be used in a 
+professional environment. For this reason I have kept the color theme extremely minimal. My initial thought was to use 
+Hibs colors all the way throughout the app but I thought it may be a bit too much. I have used splashes of Hibs colors 
+just for the buttons so that it isn't all just black and white.
+
+I chose the font Source Sans Pro as I thought it looked very professional whilst being a little more aesthetically 
+pleasing than say Aerial. I chose to use this one font all the way throughout my website.
+
+
 
 ### User Stories
 * I want to be able to search for matches by opponent.
@@ -31,15 +42,20 @@ with Python on the backend using the Flask framework. The project should include
 ---
 #### Current Features
 
+Current features of this website include the ability to search for all Hibs league games since 2010 and create and store 
+a report on any particular game. A user also has the ability to edit or delete a report already created by themselves. 
+Users can also see a list of reports created by themselves. A user cannot see or perform any updates to a report created 
+by another user.
 
 #### Future Features
 
-
+Future features will hopefully be to find another API that offers further historical data and possibly more player and 
+match stats so that the user can see the stats live in the site whilst creating a report.
 
 
 ## Technologies/Support Used
 ---
-Below is a list of technolgies I used to build my dahsboard.
+Below is a list of technologies I used to build my dashboard.
 * HTML - HTML5 provided the structure of my website. I tried to use semantic elements where possible to ensure the best structure.
 * CSS - Used to style my page.
 * [Bootstrap](https://getbootstrap.com/) - Used primarily for the grid system. I find this a really good way to position my elements where I want them.
@@ -48,6 +64,9 @@ Below is a list of technolgies I used to build my dahsboard.
 * [GitHub](https://github.com/) - This is where my repository is held externally. I will aslo use GitHub pages to deploy my website.
 * [Javascript/Jquery](https://jquery.com/) - Utilised jQuery to manipulate the DOM and add HTML.
 * [Google Fonts](https://fonts.google.com/) - Used to import specific fonts I wanted to use on my website.
+* [Python]() - Python was the language used to build the backend of the website.
+* [Flask]() - Python framework used in order to build out the routes/views of my website.
+* [MongoDB Atlas]() - NoSQL database used to store user and report details.
 
 
 ## Testing
@@ -71,16 +90,16 @@ My website was created using VSCode. VSCode is a text editor with a built in ter
 * I then linked my local git repository to a GitHub repository.
 * I then followed the below steps to deploy the site to GitHub pages.
 
-To deploy the website to GitHub pages, I followed the below steps:
+To deploy the website to Heroku, I followed the below steps:
 * Selected the milestone-project-1 from my GitHub dashboard.
 * Selected 'Settings' from the menu bar.
 * From the GitHub pages section, I chose 'master branch' from the dropdown menu.
 * Once selected, the page refreshed and a link was displayed in the GitHub pages section to my wesbite.
-* [Website Link](https://jboyd8.github.io/milestone-project-2/)
+* [Website Link](http://jb-milestone-project-3.herokuapp.com/)
 
 ### To run this project locally
 
-* Follow this link to the [GitHub Repositiry](https://github.com/jboyd8/milestone-project-2)
+* Follow this link to the [GitHub Repositiry](https://github.com/jboyd8/milestone-project-3)
 * Click on the 'Clone or Download' button.
 * Copy the URL provided.
 * Open a bash terminal, move to your desired directory.
@@ -89,13 +108,13 @@ To deploy the website to GitHub pages, I followed the below steps:
 
 ## Credits
 ---
-* To my mentor, [Reuben Ferrante](https://github.com/arex18), for guding me through the process and offering assistance when neccesary to point me in the right direction.
+* To my mentor, [Reuben Ferrante](https://github.com/arex18), for guiding me through the process and offering assistance when necessary to point me in the right direction.
 * The Slack community. The help a student is able to receive from the other students is a really great tool to have.
 * [HTML Color Code](https://htmlcolorcodes.com/) - Used this website in order to obtain hex codes whilst styling my pages.
 * [Clip Art Mag](http://clipartmag.com/) - Used this free website to get the favicon for my website.
 * [W3C Validator](https://validator.w3.org/#validate_by_input) - A validator used to check my HTML and CSS structure and format periodically throughout the build.
 * [JSHint](https://jshint.com/) - Used to run JS code through as part of testing.
-* [Cacoo](https://app.cacoo.com/o/8g0cBCgjuA/recent) - Used to build wireframes.
+* [Adobe XD](https://app.cacoo.com/o/8g0cBCgjuA/recent) - Used to build wireframes.
 
 
 

@@ -183,9 +183,6 @@ def search_matches():
         response = requests.request("GET", api_url, headers=api_headers,
                                     params=api_querystring)
 
-        print(api_headers)
-        print(api_key)
-
         if response.status_code == 200:
             selected = request.form.get('opposition-list')
             api_dict = json.loads(response.text)

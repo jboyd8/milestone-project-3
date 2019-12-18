@@ -137,7 +137,7 @@ def user_reports():
 
     reports = db.stats.find({'author': session['username']})
 
-    count = db.stats.count({'author': session['username']})
+    count = db.stats.count_documents({'author': session['username']})
 
     return render_template('userreports.html', logged_in=logged_in, reports=reports, title='My Reports', count=count)
 

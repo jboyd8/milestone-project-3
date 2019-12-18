@@ -7,14 +7,17 @@ import json
 from bson.objectid import ObjectId
 import os
 
-# if os.path.exists('api.py'):
-#     from api import api_key
-
 
 # initiates an instance of the flask and assigns it to app
 app = Flask(__name__)
+
+# imports Config so can access ENV VARS
 app.config.from_object(Config)
+
+# Creates instance of bcrypt so can hash passwords
 bcrypt = Bcrypt(app)
+
+# Assign api key to a variable that can be passed into the API call.
 api_key = Config.API_KEY
 
 # Passes the MongoURI and assigns the correct collection to db to access it in routes.

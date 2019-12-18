@@ -173,7 +173,7 @@ def search_matches():
 
     if request.method == 'POST':
         response = requests.request("GET", os.environ.get('api_url'), headers=os.environ.get('api_headers'),
-                                    params=os.environ.get('api_querystring')
+                                    params=os.environ.get('api_querystring'))
 
         if response.status_code == 200:
             selected = request.form.get('opposition-list')

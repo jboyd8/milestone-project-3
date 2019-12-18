@@ -7,14 +7,15 @@ import json
 from bson.objectid import ObjectId
 import os
 
-if os.path.exists('api.py'):
-    from api import api_url, api_querystring, api_headers
+# if os.path.exists('api.py'):
+#     from api import api_key
 
 
 # initiates an instance of the flask and assigns it to app
 app = Flask(__name__)
 app.config.from_object(Config)
 bcrypt = Bcrypt(app)
+api_key = Config.API_KEY
 
 # Passes the MongoURI and assigns the correct collection to db to access it in routes.
 client = MongoClient(Config.MONGO_URI)
@@ -171,9 +172,19 @@ def search_matches():
     if not logged_in:
         return redirect(url_for('index'))
 
+    api_url = "https://api-football-v1.p.rapidapi.com/v2/fixtures/team/249"
+    api_querystring = {"timezone":"Europe/London"}
+    api_headers = {
+    'x-rapidapi-host': "api-football-v1.p.rapidapi.com",
+    'x-rapidapi-key': api_key
+    }
+
     if request.method == 'POST':
         response = requests.request("GET", api_url, headers=api_headers,
                                     params=api_querystring)
+
+        print(api_headers)
+        print(api_key)
 
         if response.status_code == 200:
             selected = request.form.get('opposition-list')

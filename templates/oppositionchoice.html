@@ -48,7 +48,7 @@
                             <option value="Stranraer">Stranraer</option>
                         </optgroup>
                         <optgroup label="League Two">
-                            <option value="Albin Rovers">Albion Rovers</option>
+                            <option value="Albion Rovers">Albion Rovers</option>
                             <option value="Annan Athletic">Annan Athletic</option>
                             <option value="Brechin">Brechin City</option>
                             <option value="Cove Rangers">Cove Rangers</option>
@@ -65,15 +65,21 @@
                     <input class="btn btn-success opposition-submit" type="submit" value="Submit">
                 </div>
             </form>
-            {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                    <ul class="flash-list">
-                        {% for message in messages %}
-                            <li class="flash-message">{{ message }}</li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
-            {% endwith %}
         </div>
+        <div class="row">
+            <div class="col-12 text-center">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <ul class="flash-list">
+                            {% for message in messages %}
+                                <li class="flash-message">{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endwith %}
+            </div>
+        </div>
+
+
     </section>
 {% endblock %}

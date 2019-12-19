@@ -21,7 +21,8 @@ just for the buttons so that it isn't all just black and white.
 I chose the font Source Sans Pro as I thought it looked very professional whilst being a little more aesthetically 
 pleasing than say Aerial. I chose to use this one font all the way throughout my website.
 
-
+I only created Desktop wireframes as they will be exactly the same on Mobile. Everything will be on top of each other 
+vertically.
 
 ### User Stories
 * I want to be able to search for matches by opponent.
@@ -68,9 +69,9 @@ Below is a list of technologies I used to build my dashboard.
 * [GitHub](https://github.com/) - This is where my repository is held externally. I will aslo use GitHub pages to deploy my website.
 * [Javascript/Jquery](https://jquery.com/) - Utilised jQuery to manipulate the DOM and add HTML.
 * [Google Fonts](https://fonts.google.com/) - Used to import specific fonts I wanted to use on my website.
-* [Python]() - Python was the language used to build the backend of the website.
-* [Flask]() - Python framework used in order to build out the routes/views of my website.
-* [MongoDB Atlas]() - NoSQL database used to store user and report details.
+* [Python](https://www.python.org/) - Python was the language used to build the backend of the website.
+* [Flask](http://flask.palletsprojects.com/en/1.1.x/) - Python framework used in order to build out the routes/views of my website.
+* [MongoDB Atlas](https://cloud.mongodb.com/) - NoSQL database used to store user and report details.
 
 
 ## Testing
@@ -118,9 +119,5 @@ To deploy the website to Heroku, I followed the below steps:
 * [Clip Art Mag](http://clipartmag.com/) - Used this free website to get the favicon for my website.
 * [W3C Validator](https://validator.w3.org/#validate_by_input) - A validator used to check my HTML and CSS structure and format periodically throughout the build.
 * [JSHint](https://jshint.com/) - Used to run JS code through as part of testing.
-* [Adobe XD](https://app.cacoo.com/o/8g0cBCgjuA/recent) - Used to build wireframes.
-
-
-
-#### Copied Code
+* Concepts iOS app - Used to build wireframes.
 

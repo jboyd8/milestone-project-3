@@ -34,8 +34,12 @@ pleasing than say Aerial. I chose to use this one font all the way throughout my
 
 ### Wireframes
 #### Desktop
-![]()
-![]()
+![Index](static/img/wireframes/index.JPG)
+![Login/Register](static/img/wireframes/login.register.JPG)
+![My Reports](static/img/wireframes/myreports.JPG)
+![Opposition Select](static/img/wireframes/opposelect.JPG)
+![Matchlist](static/img/wireframes/matchlist.JPG)
+![Create/Edit Report](static/img/wireframes/createeditreport.JPG)
 
 
 ## Features

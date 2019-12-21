@@ -103,7 +103,7 @@ To deploy the website to Heroku, I followed the below steps:
 * From the deployment method section of the Deploy tab, I selected GitHub, and then entered my github repo link in the 
 field provided.
 * Every time I push to GitHub it will automatically send the updates across to Heroku.
-* I then also had to create some Config Vars in the settings tab, to reflect the environment variables created created 
+* I then also had to create some Config Vars in the settings tab, to reflect the environment variables created 
 in the .flaskenv file that is in .gitignore.
 * [Website Link](http://jb-milestone-project-3.herokuapp.com/)
 

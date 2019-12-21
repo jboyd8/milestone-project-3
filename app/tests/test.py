@@ -2,7 +2,6 @@ import os
 import unittest
 
 
-
 class AppTests(unittest.TestCase):
 
     def test_index(self):

@@ -86,7 +86,11 @@ No Bugs to note.
 
 ## Deployment
 ---
-My website was created using VSCode. VSCode is a text editor with a built in terminal. I chose to use a text editor/IDE outside of AWS Cloud9 to gain experience working outside of a browser. Once I had created my file strcuture and first HTML page, i initiated a local repository using GIT which was downloaded onto my machine previously. I then created an external repository in GitHub and linked the local and external repositories. This allowed me to version control throughout the lifespan of the development.
+My website was created using VSCode. VSCode is a text editor with a built in terminal. I chose to use a text editor/IDE 
+outside of AWS Cloud9 to gain experience working outside of a browser. Once I had created my file structure and first 
+HTML page, i initiated a local repository using GIT which was downloaded onto my machine previously. I then created an 
+external repository in GitHub and linked the local and external repositories. This allowed me to version control 
+throughout the lifespan of the development.
 
 * I created a new environment in VS Code
 * Created a new virtual environment.

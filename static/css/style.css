@@ -17,17 +17,14 @@ html, body {
     align-items: center;
     margin-bottom: 2em;
     background-color: #5cb85c;
-    color: #fafafa;
 }
 
 .title-link {
     text-decoration: none;
-    color: #fafafa;
 }
 
 .title-link:hover {
     text-decoration: none;
-    color: #fafafa;
 }
 
 .nav-links {

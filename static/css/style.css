@@ -3,23 +3,44 @@
 html, body {
     height: 100%;
     font-family: 'Source Sans Pro', sans-serif;
+    background-image: url("../../static/img/hibs.png");
+    background-position: center;
+    background-repeat: repeat-y;
+    background-size: cover;
 }
 
 .navigation-bar {
     height: 20%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 2em;
+    background-color: #5cb85c;
+    color: #fafafa;
 }
 
 .title-link {
     text-decoration: none;
-    color: black;
+    color: #fafafa;
 }
+
 .title-link:hover {
     text-decoration: none;
-    color: black;
+    color: #fafafa;
+}
+
+.nav-links {
+    justify-content: flex-end;
+}
+
+.navbar-nav {
+    margin-left: 2em;
+    margin-right: 2em;
+}
+
+.navbar-nav a {
+    color: #fafafa;
 }
 
 .current_user {
@@ -54,6 +75,13 @@ button a:hover {
 .index-container {
     width: 75%;
     line-height: 2em;
+}
+
+@media (min-width: 768px) {
+    .index-container {
+        width: 50%;
+        margin-top: 5em;
+    }
 }
 
 /*Login/Register Page*/

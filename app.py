@@ -6,6 +6,7 @@ import requests
 import json
 from bson.objectid import ObjectId
 import os
+from ratelimit import limits
 
 
 # initiates an instance of the flask and assigns it to app
@@ -161,6 +162,7 @@ def opposition_choice():
     return render_template('oppositionchoice.html', logged_in=logged_in, title='Opposition Choice')
 
 
+@limits(calls=100, period=86400)
 @app.route('/search_matches', methods=['POST', 'GET'])
 def search_matches():
     """

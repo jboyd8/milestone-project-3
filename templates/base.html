@@ -14,6 +14,7 @@
 </head>
 
 <body>
+<!--NavBar and Title -->
 <header class="container-fluid" id="header">
     <div class="row">
         <nav class="navbar navbar-expand-lg navbar-light navigation-bar">
@@ -22,6 +23,7 @@
                     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            <!-- Separate navs based on whether user is logged in or not -->
             {% if logged_in %}
                 <div class="collapse navbar-collapse nav-links" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
@@ -42,6 +44,7 @@
     </div>
 </header>
 
+<!--Part of main section of page - shows who is logged in -->
 {% if logged_in %}
 <div class="container-fluid current_user">
     <div class="row">
@@ -52,9 +55,11 @@
 </div>
 {% endif %}
 
+<!-- Here in order to place other templates inside base page  -->
 {% block content %}
 {% endblock %}
 
+<!-- Footer for every page -->
 <footer class="container-fluid site-footer">
     <div class="row">
         <div class="col-12 text-center">

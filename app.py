@@ -8,7 +8,6 @@ from bson.objectid import ObjectId
 import os
 from ratelimit import limits
 
-
 # initiates an instance of the flask and assigns it to app
 app = Flask(__name__)
 
@@ -178,27 +177,38 @@ def search_matches():
         return redirect(url_for('index'))
 
     api_url = "https://api-football-v1.p.rapidapi.com/v2/fixtures/team/249"
-    api_querystring = {"timezone":"Europe/London"}
+    api_querystring = {"timezone": "Europe/London"}
     api_headers = {
-    'x-rapidapi-host': "api-football-v1.p.rapidapi.com",
-    'x-rapidapi-key': api_key
+        'x-rapidapi-host': "api-football-v1.p.rapidapi.com",
+        'x-rapidapi-key': api_key
     }
 
     if request.method == 'POST':
         response = requests.request("GET", api_url, headers=api_headers,
-                                    params=api_querystring)
+                                    params=api_querystring, timeout=5)
 
         if response.status_code == 200:
-            selected = request.form.get('opposition-list')
-            api_dict = json.loads(response.text)
+            try:
+                selected = request.form.get('opposition-list')
+                api_dict = json.loads(response.text)
 
-            matches = []
-            for i in api_dict['api']['fixtures']:
-                if selected in i['homeTeam']['team_name'] or selected in i['awayTeam']['team_name']:
-                    if i['homeTeam']['team_name'] and i['awayTeam']['team_name'] and i['score']['fulltime'] and \
-                            i['event_date'] and i['venue'] and i['league']['name']:
-                        matches.append(i)
+                matches = []
+                for i in api_dict['api']['fixtures']:
+                    if selected in i['homeTeam']['team_name'] or selected in i['awayTeam']['team_name']:
+                        if i['homeTeam']['team_name'] and i['awayTeam']['team_name'] and i['score']['fulltime'] and \
+                                i['event_date'] and i['venue'] and i['league']['name']:
+                            matches.append(i)
+
+            except TypeError:
+                flash('Bad data found in the form')
+                return redirect(url_for('opposition_choice'))
+
+            except Exception:
+                flash('Error when processing data')
+                return redirect(url_for('opposition_choice'))
+
             return render_template('matchlist.html', matches=matches[::-1], logged_in=logged_in, title='Match List')
+
         else:
             flash('Sorry, we were unable to retrieve the data at this time. Please try again later.')
             return redirect('opposition_choice')

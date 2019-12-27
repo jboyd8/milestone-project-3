@@ -78,11 +78,23 @@ Below is a list of technologies I used to build my dashboard.
 ## Testing
 ---
 
+Firstly, i made use of some automated tests towards the end of the development process. I have created a separate python 
+file to store some unit tests i have written. I made use of Python's unittest library in order to write my tests. This made 
+checking that everything was working a lot easier and that all my functions were working as expected. I also made use of a CSS and HTML 
+validator to make sure it was all valid working correctly.
 
+The bulk of my testing was done manually all the way throughout the development process. I constantly checked my website in the browser to make
+sure everything was working as expected. I also periodically checked the website in other browsers to make sure everything was working the same 
+there too. I also monitored the network using the Chrome dev tools and checked the requests and responses with the API calls. 
+I made use of the dev tools to help develop the styles as well before implementing them into the actual code. 
+
+Additionally, I also sent my deployed website to friends and family and had them create an account and test all the functionality 
+to ensure firstly it was working with different browsers, but also to make sure they saw it as a responsive website and their different 
+devices. I also used the dev tools to test this throughout development, using a mobile first approach.
 
 ## Bugs
 ---
-No Bugs to note.
+
 
 ## Deployment
 ---

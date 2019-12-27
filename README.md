@@ -86,7 +86,8 @@ validator to make sure it was all valid working correctly.
 The bulk of my testing was done manually all the way throughout the development process. I constantly checked my website in the browser to make
 sure everything was working as expected. I also periodically checked the website in other browsers to make sure everything was working the same 
 there too. I also monitored the network using the Chrome dev tools and checked the requests and responses with the API calls. 
-I made use of the dev tools to help develop the styles as well before implementing them into the actual code. 
+I made use of the dev tools to help develop the styles as well before implementing them into the actual code. I consistently checked 
+the MongoDB GUI to make sure that my entries were being created/read/updated and deleted properly from the database.
 
 Additionally, I also sent my deployed website to friends and family and had them create an account and test all the functionality 
 to ensure firstly it was working with different browsers, but also to make sure they saw it as a responsive website and their different 

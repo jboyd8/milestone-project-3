@@ -128,5 +128,6 @@ in the .flaskenv file that is in .gitignore.
 * The Slack community. The help a student is able to receive from the other students is a really great tool to have.
 * [HTML Color Code](https://htmlcolorcodes.com/) - Used this website in order to obtain hex codes whilst styling my pages.
 * [W3C Validator](https://validator.w3.org/#validate_by_input) - A validator used to check my HTML and CSS structure and format periodically throughout the build.
+* [CSS Autoprefixer](https://autoprefixer.github.io/) - Used to prefix CSS for browser support.
 * Concepts iOS app - Used to build wireframes.
 

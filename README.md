@@ -15,14 +15,14 @@ its the team I support. This would allow a user to create reports on a Hibs matc
 ---
 I wanted this to look like a professional tool as it is effectively mimicking something that would be used in a 
 professional environment. For this reason I have kept the color theme extremely minimal. My initial thought was to use 
-Hibs colors all the way throughout the app but I thought it may be a bit too much. I have used splashes of Hibs colors 
-just for the buttons so that it isn't all just black and white.
+Hibs colors all the way throughout the app but I thought it may be a bit too much. I have used Hibs colors but chose to use an 
+image for the background as I thought this worked better than a solid color.
 
 I chose the font Source Sans Pro as I thought it looked very professional whilst being a little more aesthetically 
 pleasing than say Aerial. I chose to use this one font all the way throughout my website.
 
 I only created Desktop wireframes as they will be exactly the same on Mobile. Everything will be on top of each other 
-vertically.
+vertically and centered.
 
 ### User Stories
 * I want to be able to search for matches by opponent.
@@ -95,7 +95,8 @@ devices. I also used the dev tools to test this throughout development, using a 
 
 ## Bugs
 ---
-
+The website doesn't render very well on IE. The footer isn't recognized and there are a few buttons that dont work. I am trying 
+to find a solution to fix this.
 
 ## Deployment
 ---

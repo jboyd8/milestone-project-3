@@ -25,6 +25,11 @@ client = MongoClient(Config.MONGO_URI)
 db = client.hfc_stats
 
 
+# A function to see if user is logged that can be re-used.
+def is_logged_in(session):
+    return True if 'username' in session else False
+
+
 @app.route('/')
 @app.route('/index')  # Both of these serves as routes to the homepage.
 def index():
@@ -32,12 +37,10 @@ def index():
     Check if a user is logged in, if so, redirect them  to the 'My Reports' page. If not, render the index template.
     """
 
-    logged_in = True if 'username' in session else False
-
-    if logged_in:
+    if is_logged_in(session):
         return redirect(url_for('user_reports'))
 
-    return render_template('index.html', title='Home', logged_in=logged_in)
+    return render_template('index.html', title='Home', logged_in=is_logged_in(session))
 
 
 @app.route('/register_page')
@@ -46,12 +49,10 @@ def register_page():
     Check if user is logged in, if so, redirect to "my Reports". If not, render the register template.
     """
 
-    logged_in = True if 'username' in session else False
-
-    if logged_in:
+    if is_logged_in(session):
         return redirect(url_for('user_reports'))
 
-    return render_template('register.html', title='Register', logged_in=logged_in)
+    return render_template('register.html', title='Register', logged_in=is_logged_in(session))
 
 
 @app.route('/register', methods=['POST', 'GET'])
@@ -85,12 +86,10 @@ def login_page():
     Check if the user is logged in, if so redirect to "my Reports". If not, render the login form.
     """
 
-    logged_in = True if 'username' in session else False
-
-    if logged_in:
+    if is_logged_in(session):
         return redirect(url_for('user_reports'))
 
-    return render_template('login.html', title='Login', logged_in=logged_in)
+    return render_template('login.html', title='Login', logged_in=is_logged_in(session))
 
 
 @app.route('/login', methods=['POST', 'GET'])
@@ -134,16 +133,15 @@ def user_reports():
     template if the user hasnt created any reports yet.
     """
 
-    logged_in = True if 'username' in session else False
-
-    if not logged_in:
+    if not is_logged_in(session):
         return redirect(url_for('index'))
 
     reports = db.stats.find({'author': session['username']})
 
     count = db.stats.count_documents({'author': session['username']})
 
-    return render_template('userreports.html', logged_in=logged_in, reports=reports, title='My Reports', count=count)
+    return render_template('userreports.html', logged_in=is_logged_in(session), reports=reports, title='My Reports',
+                           count=count)
 
 
 @app.route('/opposition_choice')
@@ -153,12 +151,10 @@ def opposition_choice():
     choice page.
     """
 
-    logged_in = True if 'username' in session else False
-
-    if not logged_in:
+    if not is_logged_in(session):
         return redirect(url_for('index'))
 
-    return render_template('oppositionchoice.html', logged_in=logged_in, title='Opposition Choice')
+    return render_template('oppositionchoice.html', logged_in=is_logged_in(session), title='Opposition Choice')
 
 
 @limits(calls=100, period=86400)
@@ -171,9 +167,7 @@ def search_matches():
     Render the matchlist page.
     """
 
-    logged_in = True if 'username' in session else False
-
-    if not logged_in:
+    if not is_logged_in(session):
         return redirect(url_for('index'))
 
     api_url = "https://api-football-v1.p.rapidapi.com/v2/fixtures/team/249"
@@ -207,7 +201,8 @@ def search_matches():
                 flash('Error when processing data')
                 return redirect(url_for('opposition_choice'))
 
-            return render_template('matchlist.html', matches=matches[::-1], logged_in=logged_in, title='Match List')
+            return render_template('matchlist.html', matches=matches[::-1], logged_in=is_logged_in(session),
+                                   title='Match List')
 
         else:
             flash('Sorry, we were unable to retrieve the data at this time. Please try again later.')
@@ -222,13 +217,11 @@ def create_report(ht, at, venue, league, date, score):
      pre-populated.
     """
 
-    logged_in = True if 'username' in session else False
-
-    if not logged_in:
+    if not is_logged_in(session):
         return redirect(url_for('index'))
 
-    return render_template('createreport.html', logged_in=logged_in, title='Create Report', ht=ht, at=at, venue=venue,
-                           league=league, date=date, score=score)
+    return render_template('createreport.html', logged_in=is_logged_in(session), title='Create Report', ht=ht, at=at,
+                           venue=venue, league=league, date=date, score=score)
 
 
 @app.route('/submit_report', methods=['POST', 'GET'])
@@ -258,13 +251,11 @@ def edit_report(report_id):
     with details pre-populated in the form.
     """
 
-    logged_in = True if 'username' in session else False
-
-    if not logged_in:
+    if not is_logged_in(session):
         return redirect(url_for('index'))
 
     report = db.stats.find_one({'_id': ObjectId(report_id)})
-    return render_template('editreport.html', report=report, title='Edit Report', logged_in=logged_in)
+    return render_template('editreport.html', report=report, title='Edit Report', logged_in=is_logged_in(session))
 
 
 @app.route('/update_report/<report_id>', methods=['POST', 'GET'])

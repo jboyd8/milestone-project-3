@@ -1,11 +1,15 @@
+<!-- Inherits from base.html -->
 {% extends 'base.html' %}
 {% block content %}
+
     <section class="container">
         <div class="row opposition-instruction">
             <div class="col-12 text-center">
                 <p>Create your report here. Who did Hibs play against?</p>
             </div>
         </div>
+
+        <!-- Dropdown list to select an opposition and dictates what info will be taken from the API call -->
         <div class="row" id="form-row">
             <form action="{{ url_for('search_matches') }}" method="POST" class="text-center">
                 <div class="col-12 text-center">
@@ -66,6 +70,8 @@
                 </div>
             </form>
         </div>
+
+        <!-- Get flashed messages if an error occurs. -->
         <div class="row">
             <div class="col-12 text-center">
                 {% with messages = get_flashed_messages() %}
@@ -79,7 +85,6 @@
                 {% endwith %}
             </div>
         </div>
-
 
     </section>
 {% endblock %}

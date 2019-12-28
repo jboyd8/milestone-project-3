@@ -1,30 +1,37 @@
+<!-- Inherits from base.html -->
 {% extends 'base.html' %}
+
 {% block content %}
-<div class="container text-center">
-    <div class="row login-instruction">
-        <div class="col-12">
-            <p>Please fill in the below details to register.</p>
+
+    <div class="container text-center">
+        <div class="row login-instruction">
+            <div class="col-12">
+                <p>Please fill in the below details to register.</p>
+            </div>
+        </div>
+
+        <!-- Form to enter details when registering an account on the website. -->
+        <div class="row login-form">
+            <div class="col-12">
+                <form action="{{ url_for('register') }}" method="POST">
+                    Username:<br>
+                    <input type="text" name="username" class="login-fields"><br>
+                    Password:<br>
+                    <input type="password" name="password" class="login-fields"><br>
+                    <input type="submit" class="login-fields">
+                </form>
+
+                <!-- Flashes messages if an error occurs upon registration -->
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <ul class="flash-list">
+                            {% for message in messages %}
+                                <li class="flash-message">{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endwith %}
+            </div>
         </div>
     </div>
-    <div class="row login-form">
-        <div class="col-12">
-            <form action="{{ url_for('register') }}" method="POST">
-                Username:<br>
-                <input type="text" name="username" class="login-fields"><br>
-                Password:<br>
-                <input type="password" name="password" class="login-fields"><br>
-                <input type="submit" class="login-fields">
-            </form>
-            {% with messages = get_flashed_messages() %}
-            {% if messages %}
-            <ul class="flash-list">
-            {% for message in messages %}
-                <li class="flash-message">{{ message }}</li>
-            {% endfor %}
-            </ul>
-            {% endif %}
-            {% endwith %}
-        </div>
-    </div>
-</div>
 {% endblock %}

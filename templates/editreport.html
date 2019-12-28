@@ -1,3 +1,4 @@
+<!-- Inherits from base.html -->
 {% extends 'base.html' %}
 {% block content %}
 
@@ -7,6 +8,8 @@
                 <h4>Edit your match report below</h4>
             </div>
         </div>
+
+        <!-- Form to edit report in the DB. Values provided to pre-populate with current entry from DB. -->
         <div class="row text-center justify-content-center">
             <form action="{{ url_for('update_report', report_id=report._id) }}" method="POST"
                   class="justify-content-center">

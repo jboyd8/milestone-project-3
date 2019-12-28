@@ -1,12 +1,15 @@
+<!-- Inherits from base.html -->
 {% extends 'base.html' %}
 {% block content %}
 
     <div class="container text-center">
         <div class="row">
             <div class="col-12">
-                <h2>Enter you match report here</h2>
+                <h2>Enter your match report here</h2>
             </div>
         </div>
+
+        <!-- Form to enter report into the DB. Values provided to pre-populate all fields other than 'Match Report' -->
         <div class="row text-center justify-content-center">
             <div class="col-12">
                 <form action="{{ url_for('submit_report') }}" method="POST" class="text-center justify-content-center">

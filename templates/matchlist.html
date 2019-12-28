@@ -1,11 +1,15 @@
+<!-- Inherits from base.html -->
 {% extends 'base.html' %}
 {% block content %}
 
 <section class="container">
+
     <div class="row">
         <div class="col-12">
+            <!-- Loops through all the matches added to the dict from the API call. -->
             {% for match in matches %}
             <br>
+            <!-- Bootstrap card to house the details taken from within the entry of the dict. -->
             <div class="card">
                 <div class="card-body text-center">
                     {{ match.homeTeam.team_name }} {{ match.score.fulltime }} {{ match.awayTeam.team_name }}<br>
@@ -21,6 +25,8 @@
             {% endfor %}
         </div>
     </div>
+
+    <!-- Button to return to 'My Reports' -->
     <div class="row">
         <div class="col-12 matchlist-btn">
                 <button type="button" class="btn btn-info text-center"><a href="{{ url_for('index') }}">Return to My Reports</a></button>

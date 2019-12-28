@@ -9,7 +9,7 @@ with Python on the backend using the Flask framework. The project should include
 I chose to create a mock of a scouting hub that would be used by a specific team. I chose to mimic this on Hibs as
 its the team I support. This would allow a user to create reports on a Hibs match of their choosing.
 
-[Deployed Website](http://jb-milestone-project-3.herokuapp.com/)
+[Deployed Website](https://jb-milestone-project-3.herokuapp.com/)
 
 ## UX/UI
 ---
@@ -123,7 +123,7 @@ field provided.
 * Every time I push to GitHub it will automatically send the updates across to Heroku.
 * I then also had to create some Config Vars in the settings tab, to reflect the environment variables created 
 in the .flaskenv file that is in .gitignore.
-* [Website Link](http://jb-milestone-project-3.herokuapp.com/)
+* [Website Link](https://jb-milestone-project-3.herokuapp.com/)
 
 ### To run this project locally
 

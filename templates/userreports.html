@@ -1,3 +1,4 @@
+<!-- Inherits from base.html -->
 {% extends 'base.html' %}
 {% block content %}
 
@@ -7,15 +8,22 @@
                 <h2>My Reports</h2>
             </div>
         </div>
+
+        <!-- Button to create a new report -->
         <div class="row mr-button">
             <div class="col-12">
                 <button class="btn btn-success"><a href="{{ url_for('opposition_choice') }}">Create a new report</a></button>
             </div>
         </div>
+
+
         <div class="row">
             <div class="col-12">
+                <!-- If statement to check if the user has any reports created in the DB. -->
                 {% if count %}
+                    <!-- Loops through to pick out each report created by the user logged in. -->
                     {% for report in reports %}
+                        <!-- Creates a bootstrap card with the details saved in the DB. -->
                         <div class="card mr-card">
                             <div class="card-body">
                                 {{ report.home_team }} {{ report.score }} {{ report.away_team }}<br>
@@ -32,6 +40,7 @@
                             </div>
                         </div>
                     {% endfor %}
+                <!-- A paragraph to show if the user has no reports created. -->
                 {% else %}
                     <p class="mr-para">You do not have any reports</p>
                 {% endif %}
